@@ -1,36 +1,74 @@
 import React from "react"
-
 import ReactFlow from "react-flow-renderer"
 
+// x value
+
+const scale = 100
+
+const getCol = (c) => {
+  return c * scale
+}
+
+const getRow = (r) => {
+  return r * scale
+}
+
+const genEdge = (id1, id2) => {
+  return {
+    id: `${id1}-${id2}`,
+    source: id1,
+    target: id2,
+    animated: true,
+    type: "step",
+    arrowHeadType: "arrow",
+  }
+}
+
+const genTask = (nodeName, desc, row, col) => {
+  return {
+    id: nodeName,
+    type: "default",
+    data: { label: desc },
+    position: { x: getCol(col), y: getRow(row) },
+  }
+}
+
+const genNursery = (nodeName, desc, row, col) => {
+  return {
+    id: nodeName,
+    type: "default",
+    data: { label: desc },
+    position: { x: getCol(col), y: getRow(row) },
+  }
+}
+
 const elements = [
-  {
-    id: "1",
-    type: "input", // input node
-    data: { label: "Input Node" },
-    position: { x: 250, y: 25 },
-  },
-  // default node
-  {
-    id: "2",
-    // you can also pass a React component as a label
-    data: { label: <div>Default Node</div> },
-    position: { x: 100, y: 125 },
-  },
-  {
-    id: "3",
-    type: "output", // output node
-    data: { label: "Output Node" },
-    position: { x: 250, y: 250 },
-  },
-  // animated edge
-  { id: "e1-2", source: "1", target: "2", animated: true },
-  { id: "e2-3", source: "2", target: "3" },
+  genTask("t0s", "Root Task Started", 1, 1),
+  genNursery("n1s", "Nursery Started", 2, 2),
+  genTask("t1s", "Task1 start", 3, 3),
+  genTask("t2s", "Task2 start", 4, 4),
+  genTask("t1e", "Task1 end", 5, 3),
+  genTask("t2e", "Task2 end", 6, 4),
+  genNursery("n1e", "Nursery end", 7, 2),
+  genTask("t0e", "Root task ended", 8, 1),
+
+  // edges
+  genEdge("t0s", "n1s"),
+
+  genEdge("n1s", "t1s"),
+  genEdge("n1s", "t2s"),
+
+  genEdge("t1s", "t1e"),
+  genEdge("t2s", "t2e"),
+  genEdge("t1e", "n1e"),
+  genEdge("t2e", "n1e"),
+  genEdge("n1e", "t0e"),
 ]
 
 class Visualize extends React.Component {
   render() {
     return (
-      <div className="border-4 border-red-500" style={{ height: 500 }}>
+      <div className="border-4 border-red-500" style={{ height: 2000 }}>
         <ReactFlow elements={elements} />
       </div>
     )
