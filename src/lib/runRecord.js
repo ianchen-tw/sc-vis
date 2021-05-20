@@ -3,9 +3,11 @@ import { Scope } from "./scope"
 export const runRecords = [
   { time: 0, id: "t0", desc: "created", parent: null },
   { time: 1, id: "n1", desc: "created", parent: "t0" },
+  { time: 2, id: "n2", desc: "created", parent: "t0" },
   { time: 2, id: "t1", desc: "created", parent: "n1" },
   { time: 3, id: "t2", desc: "created", parent: "n1" },
   { time: 4, id: "t1", desc: "exited", parent: "n1" },
+  { time: 4, id: "n2", desc: "exited", parent: "t0" },
   { time: 5, id: "t2", desc: "exited", parent: "n1" },
   { time: 5, id: "n1", desc: "exited", parent: "t0" },
   { time: 6, id: "n1", desc: "exited", parent: "t0" },
