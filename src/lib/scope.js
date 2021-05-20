@@ -5,6 +5,12 @@ class ScopeHistory {
       start: start,
       end: null,
     }
+
+    // Location used for rendering
+    // a scope would generate two nodes on the visualization process
+    this.loc = {
+      col: null,
+    }
     this.children = []
     this.parent = null
 
@@ -53,6 +59,7 @@ class ScopeHistory {
       id: this.id,
       start: this.lifespan.start,
       end: this.lifespan.end,
+      loc: this.loc,
       children: arr,
     }
   }
