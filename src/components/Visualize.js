@@ -7,7 +7,7 @@ const customEdges = {}
 class Visualize extends React.Component {
   render() {
     return (
-      <div className="border-4 border-red-500" style={{ height: 800 }}>
+      <div className="border-2 border-blue-200 w-full h-full">
         <ReactFlow edgeTypes={customEdges} elements={defaultReactFlowItems()}>
           <Background variant="dots" gap={50} size={1} />
           <MiniMap />
