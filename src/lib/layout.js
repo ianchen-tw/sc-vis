@@ -12,36 +12,39 @@ export const arrange_cols = (root_scope) => {
   give_col(root_scope)
 }
 
-const startNodeId = (scope) => {
-  return `${scope.id}s`
-}
-const endNodeId = (scope) => {
-  return `${scope.id}e`
-}
+const startNodeId = (scope) => `${scope.id}s`
+const endNodeId = (scope) => `${scope.id}e`
 
-const locForCol = (c) => {
-  return c * 200
-}
-const locForRow = (r) => {
-  return r * 100
-}
+const locForCol = (c) => c * 200
+const locForRow = (r) => r * 100
 
-const reactFlowNode = (nodeName, desc, row, col) => {
+const reactFlowNode = (
+  nodeName,
+  desc,
+  row,
+  col,
+  srcPos = "top",
+  dstPos = "bottom"
+) => {
   return {
     id: nodeName,
     type: "default",
     data: { label: desc },
+    sourcePosition: srcPos,
+    targetPosition: dstPos,
     position: { x: locForCol(col), y: locForRow(row) },
   }
 }
 
-const reactFlowEdge = (id1, id2) => {
+const reactFlowEdge = (id1, id2, edgeType = "step", data) => {
   return {
     id: `${id1}-${id2}`,
     source: id1,
     target: id2,
     animated: true,
-    type: "step",
+    type: edgeType,
+    data: data,
+    style: { stroke: "#f6ab6c" },
     arrowHeadType: "arrow",
   }
 }
@@ -57,7 +60,9 @@ export const genReactFlowItems = (root_scope) => {
         startNodeId(scope),
         `${scope.id} start`,
         scope.lifespan.start,
-        scope.loc.col
+        scope.loc.col,
+        "right",
+        "top"
       )
     )
     // end node
@@ -66,17 +71,21 @@ export const genReactFlowItems = (root_scope) => {
         endNodeId(scope),
         `${scope.id} end`,
         scope.lifespan.end,
-        scope.loc.col
+        scope.loc.col,
+        "bottom",
+        "right"
       )
     )
     // link between start and end nodes
     items.push(reactFlowEdge(startNodeId(scope), endNodeId(scope)))
 
     // children
-    scope.children.forEach((childScope) => {
+    scope.children.forEach((childScope, index, arr) => {
       genForScope(childScope)
       // link from parent start to children start
+
       items.push(reactFlowEdge(startNodeId(scope), startNodeId(childScope)))
+
       // link from children end to parent end
       items.push(reactFlowEdge(endNodeId(childScope), endNodeId(scope)))
     })
