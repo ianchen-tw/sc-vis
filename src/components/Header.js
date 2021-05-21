@@ -1,3 +1,5 @@
+import { GoMarkGithub } from "react-icons/go"
+
 const LogoText = "SC Visualizer"
 
 const Header = (props) => {
@@ -8,14 +10,7 @@ const Header = (props) => {
           <Logo text={LogoText} />
         </div>
         <div className="flex-grow flex justify-end">
-          <LinkedItem
-            text="Docs"
-            url="https://tailwindcss.com/docs"
-          ></LinkedItem>
-          <LinkedItem
-            text="GitHub"
-            url="https://github.com/ianchen-tw/sc-vis"
-          ></LinkedItem>
+          <GitHubLink />
         </div>
       </div>
     </header>
@@ -32,17 +27,15 @@ const Logo = (props) => {
   )
 }
 
-const LinkedItem = (props) => {
-  return (
-    <a
-      className="hover:text-gray-500 antialiased"
-      target="_blank"
-      rel="noreferrer"
-      href={props.url ? props.url : "#"}
-    >
-      <span className="px-3 text-2xl">{props.text}</span>
-    </a>
-  )
-}
+const GitHubLink = () => (
+  <a
+    className="hover:text-gray-500 antialiased px-3 text-2xl flex"
+    target="_blank"
+    rel="noreferrer"
+    href="https://github.com/ianchen-tw/sc-vis"
+  >
+    <GoMarkGithub />
+  </a>
+)
 
 export default Header
