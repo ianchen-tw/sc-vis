@@ -36,33 +36,29 @@ const reactFlowNode = (
   }
 }
 
-const reactFlowEdge = (id1, id2, edgeType = "step", data) => {
+const reactFlowEdge = (id1, id2, edgeType = "step") => {
   return {
     id: `${id1}-${id2}`,
     source: id1,
     target: id2,
     animated: true,
     type: edgeType,
-    data: data,
+
     style: { stroke: "#f6ab6c" },
     arrowHeadType: "arrow",
   }
 }
 
-// generate items for react flow based on scope tree
-export const genReactFlowItems = (root_scope) => {
+export const genStartEndItems = (root_scope) => {
   let items = []
-
-  let genForScope = (scope) => {
+  let gen = (scope) => {
     // start node
     items.push(
       reactFlowNode(
         startNodeId(scope),
         `${scope.id} start`,
         scope.lifespan.start,
-        scope.loc.col,
-        "right",
-        "top"
+        scope.loc.col
       )
     )
     // end node
@@ -71,25 +67,67 @@ export const genReactFlowItems = (root_scope) => {
         endNodeId(scope),
         `${scope.id} end`,
         scope.lifespan.end,
+        scope.loc.col
+      )
+    )
+    items.push(reactFlowEdge(startNodeId(scope), endNodeId(scope)))
+    // children
+    scope.children.forEach((childScope) => {
+      gen(childScope)
+    })
+  }
+  gen(root_scope)
+  return items
+}
+
+export const genParentChildForkItems = (root_scope) => {
+  let items = []
+  const startFork = (scope) => `${scope.id}sf`
+  const endFork = (scope) => `${scope.id}ef`
+
+  let gen = (scope) => {
+    if (scope.children.length === 0) {
+      // only generate if have children
+      return
+    }
+    // start fork node
+    items.push(
+      reactFlowNode(
+        startFork(scope),
+        `${scope.id} start`,
+        scope.lifespan.start,
         scope.loc.col,
-        "bottom",
+        "right",
+        "top"
+      )
+    )
+    // end fork node
+    items.push(
+      reactFlowNode(
+        endFork(scope),
+        `${scope.id} end`,
+        scope.lifespan.end,
+        scope.loc.col,
+        "top", // not used
         "right"
       )
     )
-    // link between start and end nodes
-    items.push(reactFlowEdge(startNodeId(scope), endNodeId(scope)))
 
     // children
-    scope.children.forEach((childScope, index, arr) => {
-      genForScope(childScope)
-      // link from parent start to children start
+    scope.children.forEach((childScope) => {
+      items.push(reactFlowEdge(startFork(scope), startNodeId(childScope)))
 
-      items.push(reactFlowEdge(startNodeId(scope), startNodeId(childScope)))
-
-      // link from children end to parent end
-      items.push(reactFlowEdge(endNodeId(childScope), endNodeId(scope)))
+      items.push(reactFlowEdge(endNodeId(childScope), endFork(scope)))
+      gen(childScope)
     })
   }
-  genForScope(root_scope)
+  gen(root_scope)
+  return items
+}
+
+export const genReactFlowItems = (root_scope) => {
+  let items = []
+  items.push(...genStartEndItems(root_scope))
+  items.push(...genParentChildForkItems(root_scope))
   return items
 }
