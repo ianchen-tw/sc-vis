@@ -4,10 +4,6 @@ const endNodeId = (scope) => `${scope.id}e`
 const locForCol = (c) => c * 200
 const locForRow = (r) => r * 100
 
-const colorParentChildStartEdge = "#4287f5"
-const colorParentChildEndEdge = "#eb713d"
-const colorNodeSEEdge = "#eb3de2"
-
 const Node = ({ id, desc, row, col, type = "parentScope" }) => {
   return {
     id: id,
@@ -17,12 +13,26 @@ const Node = ({ id, desc, row, col, type = "parentScope" }) => {
   }
 }
 
+const EdgeStyles = Object.freeze({
+  startToEnd: {
+    stroke: "#6B7280",
+    strokeWidth: "2",
+  },
+  forkStart: {
+    stroke: "#3B82F6",
+  },
+  forkEnd: {
+    stroke: "#3B82F6",
+  },
+})
+
 const Edge = ({
   source,
   target,
   sourceHandle,
   targetHandle,
-  color = "#f6ab6c",
+  style,
+  animated = true,
 }) => {
   return {
     id: `e${source}-${target}`,
@@ -31,8 +41,8 @@ const Edge = ({
     sourceHandle: sourceHandle,
     targetHandle: targetHandle,
     type: "step",
-    animated: true,
-    style: { stroke: color },
+    animated: animated,
+    style: EdgeStyles[style],
     arrowHeadType: "arrow",
   }
 }
@@ -60,7 +70,7 @@ const ParentChildEdgeRender = (parentScope, childScope, rederResult) => {
     target: startNodeId(childScope),
     sourceHandle: "fork-start",
     targetHandle: "top",
-    color: colorParentChildStartEdge,
+    style: "forkStart",
   })
   // child end node to parent end node
   let childEndEdge = Edge({
@@ -68,7 +78,7 @@ const ParentChildEdgeRender = (parentScope, childScope, rederResult) => {
     target: endNodeId(parentScope),
     sourceHandle: "bottom",
     targetHandle: "fork-end",
-    color: colorParentChildEndEdge,
+    style: "forkEnd",
   })
   rederResult.push(childStartEdge, childEndEdge)
 }
@@ -79,7 +89,8 @@ const NodeLifetimeEdgeRender = (scope, rederResult) => {
     target: endNodeId(scope),
     sourceHandle: "bottom",
     targetHandle: "top",
-    color: colorNodeSEEdge,
+    style: "startToEnd",
+    animated: false,
   })
   rederResult.push(startToEnd)
 }
