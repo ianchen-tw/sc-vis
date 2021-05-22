@@ -20,7 +20,7 @@ const Header = (props) => {
 const Logo = (props) => {
   return (
     <div className="font-black text-extralbold text-4xl antialiased">
-      <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">
+      <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
         {props.text}
       </span>
     </div>
