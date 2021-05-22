@@ -5,7 +5,7 @@ const LogoText = "SC Visualizer"
 const Header = (props) => {
   return (
     <header className="pt-5">
-      <div class="max-w-container flex items-center m-2">
+      <div className="max-w-container flex items-center m-2">
         <div className="flex-none">
           <Logo text={LogoText} />
         </div>
@@ -20,7 +20,7 @@ const Header = (props) => {
 const Logo = (props) => {
   return (
     <div className="font-black text-extralbold text-4xl antialiased">
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">
+      <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">
         {props.text}
       </span>
     </div>
