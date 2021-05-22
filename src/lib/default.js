@@ -1,6 +1,7 @@
 // my library
 import { genHistoryFromRunRecords, runRecords } from "./runRecord"
-import { genReactFlowItems, arrange_cols } from "./layout"
+import { arrangeCols } from "./layout"
+import { getScopeRenderResult } from "./renderer"
 import {
   genHistoryFromStructuredData,
   structuredData,
@@ -11,7 +12,8 @@ export const defaultReactFlowItems = () => {
   //   console.log(r.export())
 
   let r2 = genHistoryFromRunRecords(runRecords)
-  arrange_cols(r2)
-  let items = genReactFlowItems(r2)
+  arrangeCols(r2)
+  let items = getScopeRenderResult(r2)
+
   return items
 }
