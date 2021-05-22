@@ -1,5 +1,5 @@
 import React from "react"
-import ReactFlow, { Background, MiniMap } from "react-flow-renderer"
+import ReactFlow, { Background, MiniMap, Controls } from "react-flow-renderer"
 
 import { defaultReactFlowItems } from "../lib/default"
 
@@ -11,6 +11,7 @@ class Visualize extends React.Component {
         <ReactFlow edgeTypes={customEdges} elements={defaultReactFlowItems()}>
           <Background variant="dots" gap={50} size={1} />
           <MiniMap />
+          <Controls />
         </ReactFlow>
       </div>
     )
