@@ -20,7 +20,7 @@ export const genHistoryFromRunRecords = (records) => {
   let rootScope = null
 
   const getScope = (id) => {
-    if (!id) {
+    if (!id || id === "null") {
       return null
     }
     return scopes[id]
