@@ -1,6 +1,6 @@
 import { Scope } from "./scope"
 
-export const runRecords = [
+export const defaultRunRecords = [
   { time: 0, id: "t0", desc: "created", parent: null },
   { time: 1, id: "n1", desc: "created", parent: "t0" },
   { time: 2, id: "n2", desc: "created", parent: "t0" },
@@ -12,6 +12,11 @@ export const runRecords = [
   { time: 5, id: "n1", desc: "exited", parent: "t0" },
   { time: 6, id: "n1", desc: "exited", parent: "t0" },
 ]
+
+export const validateRunRecords = (runRecords) => {
+  console.log("start validate")
+  return true
+}
 
 export const genHistoryFromRunRecords = (records) => {
   let scopes = {}

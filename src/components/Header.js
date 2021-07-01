@@ -1,8 +1,10 @@
-import { GoMarkGithub } from "react-icons/go"
+import { GoMarkGithub, GoCloudUpload } from "react-icons/go"
+import { useRef } from "react"
+import { validateRunRecords } from "../lib/runRecord"
 
 const LogoText = "SC Visualizer"
 
-const Header = (props) => {
+const Header = ({ onRecordsUpdate }) => {
   return (
     <header className="pt-5">
       <div className="max-w-container flex items-center m-2">
@@ -10,6 +12,7 @@ const Header = (props) => {
           <Logo text={LogoText} />
         </div>
         <div className="flex-grow flex justify-end">
+          <UploadFileButton onRecordsUpdate={onRecordsUpdate} />
           <GitHubLink />
         </div>
       </div>
@@ -24,6 +27,43 @@ const Logo = (props) => {
         {props.text}
       </span>
     </div>
+  )
+}
+
+const UploadFileButton = ({ onRecordsUpdate }) => {
+  const hiddenFileInput = useRef(null)
+
+  let onRecordDataUploaded = async (file) => {
+    let records
+    try {
+      records = JSON.parse(await file.text())
+    } catch (err) {
+      console.log("cannot read text of file")
+      return
+    }
+    if (!validateRunRecords(records)) {
+      console.log("validation failed")
+      return
+    }
+    onRecordsUpdate(records)
+  }
+  return (
+    <>
+      <button
+        className="px-3 text-2xl hover:text-gray-500 flex"
+        onClick={() => hiddenFileInput.current.click()}
+      >
+        <GoCloudUpload />
+      </button>
+      <input
+        className="hidden"
+        ref={hiddenFileInput}
+        type="file"
+        onChange={(e) => {
+          onRecordDataUploaded(e.target.files[0])
+        }}
+      />
+    </>
   )
 }
 

@@ -1,7 +1,7 @@
 const startNodeId = (scope) => `${scope.id}s`
 const endNodeId = (scope) => `${scope.id}e`
 
-const locForCol = (c) => c * 200
+const locForCol = (c) => c * 150
 const locForRow = (r) => r * 100
 
 const Node = ({ id, desc, row, col, type = "parentScope" }) => {
