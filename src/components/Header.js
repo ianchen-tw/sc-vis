@@ -1,5 +1,7 @@
 import { GoMarkGithub, GoCloudUpload } from "react-icons/go"
-import { useRef } from "react"
+import { React, useRef } from "react"
+import PropTypes from "prop-types"
+
 import { validateRunRecords } from "../lib/runRecord"
 
 const LogoText = "SC Visualizer"
@@ -19,15 +21,21 @@ const Header = ({ onRecordsUpdate }) => {
     </header>
   )
 }
+Header.propTypes = {
+  onRecordsUpdate: PropTypes.func,
+}
 
-const Logo = (props) => {
+const Logo = ({ text }) => {
   return (
     <div className="font-black text-extralbold text-4xl antialiased">
       <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
-        {props.text}
+        {text}
       </span>
     </div>
   )
+}
+Logo.propTypes = {
+  text: PropTypes.string,
 }
 
 const UploadFileButton = ({ onRecordsUpdate }) => {
@@ -65,6 +73,9 @@ const UploadFileButton = ({ onRecordsUpdate }) => {
       />
     </>
   )
+}
+UploadFileButton.propTypes = {
+  onRecordsUpdate: PropTypes.func,
 }
 
 const GitHubLink = () => (

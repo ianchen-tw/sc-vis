@@ -15,6 +15,9 @@ export const defaultRunRecords = [
 
 export const validateRunRecords = (runRecords) => {
   console.log("start validate")
+  runRecords.forEach((record) => {
+    record
+  })
   return true
 }
 

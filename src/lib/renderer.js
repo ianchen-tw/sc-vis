@@ -108,7 +108,7 @@ const ScopeRenderVisitor = (
     nodeLifetimeEdgeRender(scope, renderResult)
     scope.children.forEach((childScope) => {
       visitScope(childScope)
-      ParentChildEdgeRender(scope, childScope, renderResult)
+      parentChildEdgeRender(scope, childScope, renderResult)
     })
   }
   visitScope(root_scope)

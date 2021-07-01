@@ -1,5 +1,6 @@
 import React from "react"
-import ReactFlow, { Background, MiniMap, Controls } from "react-flow-renderer"
+import ReactFlow, { MiniMap, Controls } from "react-flow-renderer"
+import PropTypes from "prop-types"
 
 import ParentScopeNode from "./ParentScopeNode"
 
@@ -29,6 +30,9 @@ const Visualize = ({ runRecords }) => {
       </ReactFlow>
     </div>
   )
+}
+Visualize.propTypes = {
+  runRecords: PropTypes.array,
 }
 
 export default Visualize

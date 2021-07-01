@@ -1,5 +1,6 @@
 import React from "react"
 import { Handle } from "react-flow-renderer"
+import PropTypes from "prop-types"
 
 const ParentScopeNode = ({ data }) => {
   return (
@@ -15,6 +16,10 @@ const ParentScopeNode = ({ data }) => {
       <Handle type="source" position="bottom" id="bottom" />
     </div>
   )
+}
+
+ParentScopeNode.propTypes = {
+  data: PropTypes.any,
 }
 
 export default ParentScopeNode
