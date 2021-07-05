@@ -13,6 +13,13 @@ const customNodeTypes = {
   parentScope: ParentScopeNode,
 }
 
+const onLoad = (reactFlowInstance) => {
+  // would only fitView on the first load
+  // Updating records would not trigger further update on graph
+  // TODO: auto-fitview on every update
+  reactFlowInstance.fitView({ padding: 0.25, includeHiddenNodes: true })
+}
+
 const Visualize = ({ runRecords }) => {
   let r2 = genHistoryFromRunRecords(runRecords)
   arrangeCols(r2)
@@ -23,6 +30,7 @@ const Visualize = ({ runRecords }) => {
         edgeTypes={customEdges}
         nodeTypes={customNodeTypes}
         elements={items}
+        onLoad={onLoad}
       >
         {/* <Background variant="dots" gap={50} size={1} /> */}
         <MiniMap />
