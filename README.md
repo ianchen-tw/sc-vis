@@ -18,3 +18,8 @@ However, the visulizer interface should be language-agnostic (at least the forma
 2. Click the upload button on the right menu bar.
 3. Upload your log output (`logs.json`) from [trio-sc-vis]
 4. See your result in the browser panel.
+
+
+## Try
+
+Upload `examples/happyeyeball.json` to see example output.
