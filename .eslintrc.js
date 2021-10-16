@@ -18,4 +18,12 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {},
+  overrides: [
+    {
+      files: ["*.js"],
+      rules: {
+        "no-unused-vars": "off",
+      },
+    },
+  ],
 }

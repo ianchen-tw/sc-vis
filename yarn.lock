@@ -4298,6 +4298,11 @@ d3-geo@^3.0.1:
   dependencies:
     d3-array "2.5.0 - 3"
 
+d3-hierarchy@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/d3-hierarchy/-/d3-hierarchy-3.0.1.tgz#0365342d54972e38ca05e9143e0ab1c60846b3b5"
+  integrity sha512-RlLTaofEoOrMK1JoXYIGhKTkJFI/6rFrYPgxy6QlZo2BcVc4HGTqEU0rPpzuMq5T/5XcMtAzv1XiLA3zRTfygw==
+
 d3-interpolate@1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-1.4.0.tgz#526e79e2d80daa383f9e0c1c1c7dcc0f0583e987"
@@ -5643,6 +5648,11 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
+
+fast-sort@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/fast-sort/-/fast-sort-3.0.3.tgz#f3f61561ebf8625672f4b2c652816e92d6273158"
+  integrity sha512-8O5/zuAd0caOZ8ray+uCBLP2FQiShC0whpsAKrn9JcluJRyV/XopSO+u2hYwGf1g0VvpYbnD3ZM/Jqp07AEIhQ==
 
 fastq@^1.6.0:
   version "1.10.1"
