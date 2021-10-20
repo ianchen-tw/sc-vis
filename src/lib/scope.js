@@ -1,4 +1,4 @@
-class ScopeHistory {
+export class ScopeHistory {
   constructor(id, start, parent) {
     this.id = id
     this.lifespan = {

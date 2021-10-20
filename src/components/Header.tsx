@@ -1,12 +1,15 @@
 import { GoMarkGithub, GoCloudUpload } from "react-icons/go"
-import { React, useRef } from "react"
-import PropTypes from "prop-types"
+import React, { useRef } from "react"
 
-import { validateRunRecords } from "../lib/runRecord"
+import { validateRunRecords, RunRecord } from "../lib/runRecord"
 
 const LogoText = "SC Visualizer"
 
-const Header = ({ onRecordsUpdate }) => {
+type HeaderProps = {
+  onRecordsUpdate: (data: RunRecord[]) => void
+}
+
+const Header = (props: HeaderProps) => {
   return (
     <header className="pt-5">
       <div className="max-w-container flex items-center m-2">
@@ -14,34 +17,35 @@ const Header = ({ onRecordsUpdate }) => {
           <Logo text={LogoText} />
         </div>
         <div className="flex-grow flex justify-end">
-          <UploadFileButton onRecordsUpdate={onRecordsUpdate} />
+          <UploadFileButton onRecordsUpdate={props.onRecordsUpdate} />
           <GitHubLink />
         </div>
       </div>
     </header>
   )
 }
-Header.propTypes = {
-  onRecordsUpdate: PropTypes.func,
-}
 
-const Logo = ({ text }) => {
+type LogoProps = {
+  text: string
+}
+const Logo = (props: LogoProps) => {
   return (
     <div className="font-black text-extralbold text-4xl antialiased">
       <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
-        {text}
+        {props.text}
       </span>
     </div>
   )
 }
-Logo.propTypes = {
-  text: PropTypes.string,
+
+
+type UploadFileButtonProps = {
+  onRecordsUpdate: (data: RunRecord[]) => void
 }
+const UploadFileButton = (props: UploadFileButtonProps) => {
+  const hiddenFileInput = useRef<HTMLInputElement>(null)
 
-const UploadFileButton = ({ onRecordsUpdate }) => {
-  const hiddenFileInput = useRef(null)
-
-  let onRecordDataUploaded = async (file) => {
+  let onRecordDataUploaded = async (file: File) => {
     let records
     try {
       records = JSON.parse(await file.text())
@@ -49,17 +53,19 @@ const UploadFileButton = ({ onRecordsUpdate }) => {
       console.log("cannot read text of file")
       return
     }
-    if (!validateRunRecords(records)) {
+    let result = validateRunRecords(records)
+    if (result === undefined) {
       console.log("validation failed")
       return
+    } else {
+      props.onRecordsUpdate(result)
     }
-    onRecordsUpdate(records)
   }
   return (
     <>
       <button
         className="px-3 text-2xl hover:text-gray-500 flex"
-        onClick={() => hiddenFileInput.current.click()}
+        onClick={() => hiddenFileInput?.current?.click()}
       >
         <GoCloudUpload />
       </button>
@@ -68,15 +74,15 @@ const UploadFileButton = ({ onRecordsUpdate }) => {
         ref={hiddenFileInput}
         type="file"
         onChange={(e) => {
-          onRecordDataUploaded(e.target.files[0])
+          if (e?.target?.files) {
+            onRecordDataUploaded(e.target.files[0])
+          }
         }}
       />
     </>
   )
 }
-UploadFileButton.propTypes = {
-  onRecordsUpdate: PropTypes.func,
-}
+
 
 const GitHubLink = () => (
   <a
