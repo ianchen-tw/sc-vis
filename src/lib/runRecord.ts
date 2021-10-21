@@ -1,4 +1,4 @@
-import { VisScope } from "./tsScope"
+import { VisScope } from "./scope"
 
 type RunRecordType = "created" | "exited"
 

@@ -1,4 +1,4 @@
-import { LifeSpan, VisScope } from "./tsScope"
+import { LifeSpan, VisScope } from "./scope"
 
 test("lifespan creation", () => {
     const x: LifeSpan = { start: 3, end: 6.7 }
