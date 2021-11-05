@@ -1,69 +1,50 @@
-import { GoMarkGithub, GoCloudUpload } from "react-icons/go"
-import React, { useRef } from "react"
+import { GoMarkGithub, GoCloudUpload } from 'react-icons/go';
+import { useRef } from 'react';
 
-import { validateRunRecords, RunRecord } from "../lib/runRecord"
+import { validateRunRecords, RunRecord } from '../lib/runRecord';
 
-const LogoText = "SC Visualizer"
-
-type HeaderProps = {
-  onRecordsUpdate: (data: RunRecord[]) => void
-}
-
-const Header = (props: HeaderProps) => {
-  return (
-    <header className="pt-5">
-      <div className="max-w-container flex items-center m-2">
-        <div className="flex-none">
-          <Logo text={LogoText} />
-        </div>
-        <div className="flex-grow flex justify-end">
-          <UploadFileButton onRecordsUpdate={props.onRecordsUpdate} />
-          <GitHubLink />
-        </div>
-      </div>
-    </header>
-  )
-}
+const LogoText = 'SC Visualizer';
 
 type LogoProps = {
   text: string
 }
 const Logo = (props: LogoProps) => {
+  const { text } = props;
+
   return (
     <div className="font-black text-extralbold text-4xl antialiased">
       <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">
-        {props.text}
+        {text}
       </span>
     </div>
-  )
-}
-
+  );
+};
 
 type UploadFileButtonProps = {
   onRecordsUpdate: (data: RunRecord[]) => void
 }
 const UploadFileButton = (props: UploadFileButtonProps) => {
-  const hiddenFileInput = useRef<HTMLInputElement>(null)
+  const hiddenFileInput = useRef<HTMLInputElement>(null);
 
-  let onRecordDataUploaded = async (file: File) => {
-    let records
+  const onRecordDataUploaded = async (file: File) => {
+    let records;
     try {
-      records = JSON.parse(await file.text())
+      records = JSON.parse(await file.text());
     } catch (err) {
-      console.log("cannot read text of file")
-      return
+      console.log('cannot read text of file');
+      return;
     }
-    let result = validateRunRecords(records)
+    const result = validateRunRecords(records);
     if (result === undefined) {
-      console.log("validation failed")
-      return
+      console.log('validation failed');
     } else {
-      props.onRecordsUpdate(result)
+      props.onRecordsUpdate(result);
     }
-  }
+  };
   return (
     <>
       <button
+        type="button"
         className="px-3 text-2xl hover:text-gray-500 flex"
         onClick={() => hiddenFileInput?.current?.click()}
       >
@@ -75,14 +56,13 @@ const UploadFileButton = (props: UploadFileButtonProps) => {
         type="file"
         onChange={(e) => {
           if (e?.target?.files) {
-            onRecordDataUploaded(e.target.files[0])
+            onRecordDataUploaded(e.target.files[0]);
           }
         }}
       />
     </>
-  )
-}
-
+  );
+};
 
 const GitHubLink = () => (
   <a
@@ -93,6 +73,26 @@ const GitHubLink = () => (
   >
     <GoMarkGithub />
   </a>
-)
+);
 
-export default Header
+type HeaderProps = {
+  onRecordsUpdate: (data: RunRecord[]) => void;
+}
+const Header = (props: HeaderProps) => {
+  const { onRecordsUpdate } = props;
+  return (
+    <header className="pt-5">
+      <div className="max-w-container flex items-center m-2">
+        <div className="flex-none">
+          <Logo text={LogoText} />
+        </div>
+        <div className="flex-grow flex justify-end">
+          <UploadFileButton onRecordsUpdate={onRecordsUpdate} />
+          <GitHubLink />
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
