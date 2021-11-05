@@ -1,4 +1,6 @@
 *.json
+!tsconfig.json
+!.eslintrc.json
 !examples/*.json
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
