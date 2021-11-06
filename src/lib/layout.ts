@@ -59,6 +59,11 @@ export const reorderByScopes = (scopeTree: VisNode): ReorderResult => {
     if (visScope.name !== NAME_ROOT_SCOPE) {
       scopeTable.set(visScope, range);
     }
+
+    // TODO: This is an impl specific behavior (Python-trio)
+    if (visScope.children.length === 1 && visScope.children[0].type === 'task') {
+      scopeTable.delete(visScope);
+    }
   };
   dfsScope(root, 0);
   // console.log("scope_table", scope_table)
