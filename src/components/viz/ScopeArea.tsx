@@ -1,11 +1,14 @@
+const areaStyle = {
+  strokeOpacity: 0.35,
+};
+
 type ScopeAreaProps = {
   width: number
   height: number
-  name: string
 }
 
 const ScopeArea = (props: ScopeAreaProps) => {
-  const { width, height, name } = props;
+  const { width, height } = props;
   return (
     <g>
       <rect
@@ -14,10 +17,11 @@ const ScopeArea = (props: ScopeAreaProps) => {
         strokeWidth="2"
         width={width}
         height={height}
+        style={areaStyle}
       />
-      <text x="-15" y="15">
-        {name}
-      </text>
+      {/* <text x="-15" y="15">
+        .
+      </text> */}
     </g>
   );
 };

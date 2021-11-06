@@ -4,6 +4,7 @@ import { VisNode } from '../lib/scope';
 import ScopeArea from './viz/ScopeArea';
 import { reorderByScopes } from '../lib/layout';
 import XAxis from './viz/XAxis';
+import TaskLifeTime from './viz/TaskLifeTime';
 
 const margin = {
   top: 20, right: 100, bottom: 20, left: 20,
@@ -16,7 +17,7 @@ type TaskDiagramProps = {
 }
 
 const TaskDiagram = (props: TaskDiagramProps) => {
-  const { width = 600, height = 400, scopeTree } = props;
+  const { width = 1000, height = 400, scopeTree } = props;
 
   // const { tasks, scope_ranges } = reorder_by_scopes(data, scopes)
   const { tasks, scopeResults } = reorderByScopes(scopeTree);
@@ -48,7 +49,23 @@ const TaskDiagram = (props: TaskDiagramProps) => {
         <ScopeArea
           width={wid}
           height={hei}
-          name={result.scope.name}
+        // name={result.scope.name}
+        />
+      </g>
+    );
+  });
+
+  const taskLifeTimes = tasks.map((task) => {
+    const x = xScale(task.lifespan.start);
+    const y = yScale(task.name) ?? 0;
+    const wid = xScale(((task.lifespan.end ?? task.lifespan.start) - task.lifespan.start));
+    const hei = yScale.bandwidth();
+    return (
+      <g transform={`translate(${x},${y})`}>
+        <TaskLifeTime
+          width={wid}
+          outerHeight={hei}
+          name={task.name}
         />
       </g>
     );
@@ -71,6 +88,7 @@ const TaskDiagram = (props: TaskDiagramProps) => {
           height={innerHeight}
         />
         {scopeAreas}
+        {taskLifeTimes}
       </g>
     </svg>
   );
