@@ -87,6 +87,7 @@ type TaskDiagramProps = {
   height?: number;
   scopeTree: VisNode;
 }
+
 const TaskDiagram = (props: TaskDiagramProps) => {
   const { width = 600, height = 400, scopeTree } = props;
   const d3Container = useRef(null);
@@ -102,6 +103,7 @@ const TaskDiagram = (props: TaskDiagramProps) => {
     const maxEndTime = max(tasks.map((t) => t.lifespan.end ?? 0)) ?? 0;
     const svg = select(d3Container.current);
     svg.selectAll('*').remove();
+    svg.attr('viewBox', `0 0 ${width} ${height}`);
 
     // scale
     const xScale = scaleLinear()
@@ -114,48 +116,41 @@ const TaskDiagram = (props: TaskDiagramProps) => {
       .paddingInner(0.5)
       .paddingOuter(0.5);
 
-    // axis
-    svg
+    // board with axiss
+    const board = svg.append('g')
+      .attr('transform', `translate(${padx}, ${pady})`)
+      .attr('id', 'main-drawboard');
+    board
       .append('g')
       .call(axisTop<number>(xScale))
-      .attr('transform', `translate(${padx}, ${pady})`);
-    svg
       .append('g')
-      .call(axisLeft<string>(yScale))
-      .attr('transform', `translate(${padx}, ${pady})`);
+      .call(axisLeft<string>(yScale));
 
+    // board
     // scope data
-    const scopeRects = svg.append('g').selectAll('rect').data(scopeResults);
-    scopeRects.exit().remove();
-    scopeRects
-      .enter()
-      .append('rect')
+    const scopeAreaGroup = board.append('g').selectAll('g').data(scopeResults).enter();
+    const scopeArea = scopeAreaGroup.append('g').attr('class', 'scope-area').attr('transform', (d) => {
+      const x = xScale(d.scope.lifespan.start);
+      const y = yScale(d.startTask) ?? 0 - yScale.bandwidth() * 0.2;
+      return `translate(${x}, ${y})`;
+    });
+    scopeArea.append('rect')
       .style('fill', 'None')
       .attr('stroke', 'black')
       .attr('stroke-width', '2')
-      .attr('x', (d) => xScale(d.scope.lifespan.start))
-      .attr('y', (d) => yScale(d.startTask) ?? 0 - yScale.bandwidth() * 0.2)
       .attr(
         'height',
         (d) => (yScale(d.endTask) ?? 1) - (yScale(d.startTask) ?? 0) + yScale.bandwidth() * 1.4,
       )
-      .attr('width', (d) => xScale(d.scope.lifespan.end - d.scope.lifespan.start))
-      .attr('transform', `translate(${padx}, ${pady})`);
-
-    // scope label
-    const scopeLabels = svg.append('g').selectAll('text').data(scopeResults);
-    scopeLabels.exit().remove();
-    scopeLabels
-      .enter()
+      .attr('width', (d) => xScale(d.scope.lifespan.end - d.scope.lifespan.start));
+    scopeArea
       .append('text')
       .text((d) => d.scope.name)
-      .attr('x', (d) => xScale(d.scope.lifespan.start))
-      .attr('y', (d) => (yScale(d.startTask) ?? 0) - yScale.bandwidth() * 0.2)
-      .attr('transform', `translate(${padx}, ${pady})`);
+      .attr('x', -15)
+      .attr('y', 15);
 
-    // task data
-    const bars = svg.append('g').selectAll('rect').data(tasks);
-    bars.exit().remove();
+    // Task data
+    const bars = board.append('g').selectAll('rect').data(tasks);
 
     bars.enter()
       .append('rect')
@@ -163,8 +158,7 @@ const TaskDiagram = (props: TaskDiagramProps) => {
       .attr('x', (d) => xScale(d.lifespan.start))
       .attr('y', (d) => yScale(d.name) ?? 0)
       .attr('height', yScale.bandwidth())
-      .attr('width', (d) => xScale((d.lifespan.end ?? d.lifespan.start) - d.lifespan.start))
-      .attr('transform', `translate(${padx}, ${pady})`);
+      .attr('width', (d) => xScale((d.lifespan.end ?? d.lifespan.start) - d.lifespan.start));
   }, [width, height, scopeTree]);
 
   return (
