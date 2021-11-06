@@ -3,6 +3,7 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import { VisNode } from '../lib/scope';
 import ScopeArea from './viz/ScopeArea';
 import { reorderByScopes } from '../lib/layout';
+import XAxis from './viz/XAxis';
 
 const margin = {
   top: 20, right: 100, bottom: 20, left: 20,
@@ -53,6 +54,10 @@ const TaskDiagram = (props: TaskDiagramProps) => {
     );
   });
 
+  const xTicks = xScale.ticks().map((tickValue) => ({
+    tickValue, pos: xScale(tickValue),
+  }));
+
   return (
     <svg
       className="border-2 border-gray-300"
@@ -61,21 +66,12 @@ const TaskDiagram = (props: TaskDiagramProps) => {
       viewBox={`0 0 ${width} ${height}`}
     >
       <g transform={`translate(${margin.left},${margin.top})`}>
-        {xScale.ticks().map((tickValue) => (
-          <g key={`tick-${tickValue}`} transform={`translate(${xScale(tickValue)},0)`}>
-            <line
-              y2={innerHeight}
-              stroke="black"
-              style={{
-                strokeOpacity: 0.2,
-              }}
-            />
-            <text style={{ textAnchor: 'middle' }} dy=".71em" y={innerHeight + 5}>{tickValue}</text>
-          </g>
-        ))}
+        <XAxis
+          ticks={xTicks}
+          height={innerHeight}
+        />
         {scopeAreas}
       </g>
-
     </svg>
   );
 };
