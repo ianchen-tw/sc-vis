@@ -17,7 +17,7 @@ type TaskDiagramProps = {
 }
 
 const TaskDiagram = (props: TaskDiagramProps) => {
-  const { width = 1000, height = 400, scopeTree } = props;
+  const { width = 1000, height = 800, scopeTree } = props;
 
   // const { tasks, scope_ranges } = reorder_by_scopes(data, scopes)
   const { tasks, scopeResults } = reorderByScopes(scopeTree);

@@ -1,5 +1,5 @@
 const areaStyle = {
-  strokeOpacity: 0.35,
+  strokeOpacity: 0.3,
 };
 
 type ScopeAreaProps = {
@@ -13,7 +13,7 @@ const ScopeArea = (props: ScopeAreaProps) => {
     <g>
       <rect
         fill="None"
-        stroke="black"
+        stroke="#2460A7FF"
         strokeWidth="2"
         width={width}
         height={height}
