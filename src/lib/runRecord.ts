@@ -64,22 +64,6 @@ export const defaultRunRecords: RunRecord[] = [
 
 ];
 
-export const validateRunRecords = (records: RunRecord[]): RunRecord[] | undefined => {
-  records.forEach((r) => {
-    // console.log(r);
-    if (r.parent === null) {
-      r.parent = undefined;
-    }
-  });
-
-  // TODO
-  // 1. Task node must be leaf nodes
-  // 2. created tasks must end
-  // 3. must create before ends
-
-  return records;
-};
-
 /**
  * Build an scope Tree based on record given
  *  ps. would create a synthetic root node to contains all nodes given

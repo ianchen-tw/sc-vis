@@ -1,7 +1,8 @@
 import { GoMarkGithub, GoCloudUpload } from 'react-icons/go';
 import { useRef } from 'react';
 
-import { validateRunRecords, RunRecord } from '../lib/runRecord';
+import { RunRecord } from '../lib/runRecord';
+import { parseSCLogs } from '../lib/sclogs';
 
 const LogoText = 'SC Visualizer';
 
@@ -27,18 +28,12 @@ const UploadFileButton = (props: UploadFileButtonProps) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const onRecordDataUploaded = async (file: File) => {
-    let records;
-    try {
-      records = JSON.parse(await file.text());
-    } catch (err) {
-      console.log('cannot read text of file');
-      return;
-    }
-    const result = validateRunRecords(records);
-    if (result === undefined) {
-      console.log('validation failed');
+    const result = parseSCLogs(await file.text());
+    if (result.ok) {
+      const records = result.val.runRecords;
+      props.onRecordsUpdate(records);
     } else {
-      props.onRecordsUpdate(result);
+      console.log(result.val);
     }
   };
   return (
