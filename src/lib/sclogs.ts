@@ -38,7 +38,7 @@ export interface SCLogsResult {
 const LogResultConfigId: keyof SCLogsResult = 'config';
 const LogResultRunRecordsId: keyof SCLogsResult = 'runRecords';
 
-class ExplainableErr extends Error {
+export class ExplainableErr extends Error {
   hintObject: any | undefined;
 
   constructor(message: string | undefined, hintObject: any | undefined = undefined) {
