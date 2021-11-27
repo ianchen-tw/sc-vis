@@ -1,4 +1,4 @@
-import { LifeSpan, VisNode } from './scope';
+import { LifeSpan, VisNode } from '../scope';
 
 test('lifespan creation', () => {
   const x: LifeSpan = { start: 3, end: 6.7 };

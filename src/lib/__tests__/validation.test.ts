@@ -1,5 +1,5 @@
-import { RunRecord } from './runRecord';
-import { validateJSONLogConfig, validateJSONRunRecord, validateRunRecords } from './sclogs';
+import { RunRecord } from '../runRecord';
+import { validateJSONLogConfig, validateJSONRunRecord, validateRunRecords } from '../sclogs';
 
 test('log config with different values', () => {
   expect(validateJSONLogConfig({})).toBe(true);

@@ -1,6 +1,6 @@
 import {
   NAME_ROOT_SCOPE, buildScopeTree, RunRecord, defaultRunRecords,
-} from './runRecord';
+} from '../runRecord';
 
 test('multi root', () => {
   const data: RunRecord[] = [
