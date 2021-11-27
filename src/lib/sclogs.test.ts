@@ -3,9 +3,9 @@ import { validateJSONLogConfig, validateJSONRunRecord, validateRunRecords } from
 
 test('log config with different values', () => {
   expect(validateJSONLogConfig({})).toBe(true);
-  expect(validateJSONLogConfig({ trioHideScope: true })).toBe(true);
-  expect(validateJSONLogConfig({ trioHideScope: '996' })).toBe(false);
-  expect(validateJSONLogConfig({ trioHideScope: true, aa: 123 })).toBe(false);
+  expect(validateJSONLogConfig({ makeDirectScopeTransparent: true })).toBe(true);
+  expect(validateJSONLogConfig({ makeDirectScopeTransparent: '996' })).toBe(false);
+  expect(validateJSONLogConfig({ makeDirectScopeTransparent: true, aa: 123 })).toBe(false);
 });
 
 test('RunRecord inputs', () => {
@@ -32,10 +32,7 @@ test('RunRecords: Task should close', () => {
       time: 0.34, name: 'A', desc: 'created', type: 'scope', parent: undefined,
     },
   ];
-  const t = () => {
-    validateRunRecords(r1);
-  };
-  expect(t).toThrowError(Error);
+  expect(validateRunRecords(r1).err).toBe(true);
 });
 
 test('RunRecords: Task should open only once', () => {
@@ -50,8 +47,5 @@ test('RunRecords: Task should open only once', () => {
       time: 0.35, name: 'A', desc: 'exited', type: 'scope', parent: undefined,
     },
   ];
-  const t = () => {
-    validateRunRecords(r1);
-  };
-  expect(t).toThrowError(Error);
+  expect(validateRunRecords(r1).err).toBe(true);
 });

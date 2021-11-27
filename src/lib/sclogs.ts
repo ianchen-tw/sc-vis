@@ -38,6 +38,15 @@ export interface SCLogsResult {
 const LogResultConfigId: keyof SCLogsResult = 'config';
 const LogResultRunRecordsId: keyof SCLogsResult = 'runRecords';
 
+class ExplainableErr extends Error {
+  hintObject: any | undefined;
+
+  constructor(message: string | undefined, hintObject: any | undefined = undefined) {
+    super(message);
+    this.hintObject = hintObject;
+  }
+}
+
 const ensurePropertyExists = (
   obj: any,
   property: string,
@@ -54,27 +63,34 @@ const ensurePropertyExists = (
  * Would raise Error if failed
  * @param records
  */
-export const validateRunRecords = (records: RunRecord[]) => {
+export const validateRunRecords = (records: RunRecord[]): Result<boolean, ExplainableErr> => {
   // Validate data constraints
 
   // Constraint: Created tasks must end
   const openTasks = new Set();
-  records.forEach((r) => {
-    if (r.desc === 'created') {
-      if (openTasks.has(r.name)) {
-        throw Error(`task opened twice: ${r}`);
+
+  try {
+    records.forEach((r) => {
+      if (r.desc === 'created') {
+        if (openTasks.has(r.name)) {
+          Err(new ExplainableErr('task opened twice', r)).unwrap();
+        }
+        openTasks.add(r.name);
+      } else if (r.desc === 'exited') {
+        if (!openTasks.has(r.name)) {
+          Err(new ExplainableErr('Task close before open', r)).unwrap();
+        }
+        openTasks.delete(r.name);
       }
-      openTasks.add(r.name);
-    } else if (r.desc === 'exited') {
-      if (!openTasks.has(r.name)) {
-        throw Error(`Task close before open: ${r}`);
-      }
-      openTasks.delete(r.name);
-    }
-  });
-  if (openTasks.size > 0) {
-    throw Error(`Task not closed: ${[...openTasks]}`);
+    });
+  } catch (explainableErr) {
+    return Err(explainableErr as ExplainableErr);
   }
+
+  if (openTasks.size > 0) {
+    return Err(new ExplainableErr('Task not closed', [...openTasks]));
+  }
+  return Ok(true);
   // Constraint: Must reference node that previous defined
 
   // Constraint: Task node must be leaf nodes
@@ -86,7 +102,7 @@ export const validateRunRecords = (records: RunRecord[]) => {
  * @param json an object for validation as an SCLogsResult
  * @returns None
  */
-export const parseSCLogs = (json: any): Result<SCLogsResult, Error> => {
+export const parseSCLogs = (json: any): Result<SCLogsResult, ExplainableErr> => {
   const raw = JSON.parse(json);
 
   try {
@@ -94,22 +110,23 @@ export const parseSCLogs = (json: any): Result<SCLogsResult, Error> => {
     ensurePropertyExists(raw, LogResultRunRecordsId, 'sclogs');
     const basicResult = raw as SCLogsResult;
     if (!Array.isArray(basicResult.runRecords)) {
-      throw Error('runRecord must be an array');
+      Err(new ExplainableErr('runRecord must be an array')).unwrap();
     }
     // Validate json format
     if (!validateJSONLogConfig(basicResult.config)) {
-      throw Error('Failed to parse log config');
+      Err(new ExplainableErr('Failed to parse log config')).unwrap();
     }
     basicResult.runRecords.forEach((rawRecord) => {
       if (!validateJSONRunRecord(rawRecord)) {
-        throw Error(`Failed to parse runRecord: ${rawRecord}`);
+        console.log(validateJSONRunRecord.errors);
+        console.log('record: ', rawRecord);
+        Err(new ExplainableErr('Failed to parse runRecord', rawRecord)).unwrap();
       }
     });
     const { runRecords } = basicResult;
-    validateRunRecords(runRecords);
-  } catch (e) {
-    return Err(e as Error);
+    validateRunRecords(runRecords).unwrap();
+  } catch (explainableErr) {
+    return Err(explainableErr as ExplainableErr);
   }
-
   return Ok(raw as SCLogsResult);
 };

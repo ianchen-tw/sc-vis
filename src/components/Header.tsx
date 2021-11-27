@@ -33,7 +33,9 @@ const UploadFileButton = (props: UploadFileButtonProps) => {
       const records = result.val.runRecords;
       props.onRecordsUpdate(records);
     } else {
-      console.log(result.val);
+      const err = result.val;
+      console.log(err.message);
+      console.log(err.hintObject);
     }
   };
   return (
