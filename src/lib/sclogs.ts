@@ -1,6 +1,6 @@
 import { Ok, Err, Result } from 'ts-results';
 import Ajv, { JTDSchemaType } from 'ajv/dist/jtd';
-
+import { TaskError, SCLogsError } from './err';
 import { RunRecord } from './runRecord';
 
 const ajv = new Ajv();
@@ -47,20 +47,13 @@ class ExplainableErr extends Error {
   }
 }
 
-const ensurePropertyExists = (
+const propertyExists = (
   obj: any,
   property: string,
-  objName: string | undefined = undefined,
-) => {
-  if (!Object.prototype.hasOwnProperty.call(obj, property)) {
-    const msg = `Cannot find property ${property}`;
-    const tailMsg = objName === undefined ? '' : ` in object ${objName}`;
-    throw Error(msg + tailMsg);
-  }
-};
+) => Object.prototype.hasOwnProperty.call(obj, property);
 
 /**
- * Would raise Error if failed
+ * Validate data-related constraints
  * @param records
  */
 export const validateRunRecords = (records: RunRecord[]): Result<boolean, ExplainableErr> => {
@@ -71,18 +64,18 @@ export const validateRunRecords = (records: RunRecord[]): Result<boolean, Explai
   for (const r of records) {
     if (r.desc === 'created') {
       if (openTasks.has(r.name)) {
-        return Err(new ExplainableErr('task opened twice', r));
+        return Err(new ExplainableErr(TaskError.DUPLICATED, r));
       }
       openTasks.add(r.name);
     } else if (r.desc === 'exited') {
       if (!openTasks.has(r.name)) {
-        return Err(new ExplainableErr('Task close before open', r));
+        return Err(new ExplainableErr(TaskError.CLOSE_VOID, r));
       }
       openTasks.delete(r.name);
     }
   }
   if (openTasks.size > 0) {
-    return Err(new ExplainableErr('Task not closed', [...openTasks]));
+    return Err(new ExplainableErr(TaskError.NOT_CLOSED, [...openTasks]));
   }
   return Ok(true);
   // Constraint: Must reference node that previous defined
@@ -99,24 +92,34 @@ export const validateRunRecords = (records: RunRecord[]): Result<boolean, Explai
 export const parseSCLogs = (json: any): Result<SCLogsResult, ExplainableErr> => {
   const raw = JSON.parse(json);
 
-  ensurePropertyExists(raw, LogResultConfigId, 'sclogs');
-  ensurePropertyExists(raw, LogResultRunRecordsId, 'sclogs');
+  if (!propertyExists(raw, LogResultConfigId)) {
+    return Err(new ExplainableErr(SCLogsError.FIELD_MISSING_CONFIG));
+  }
+  if (!propertyExists(raw, LogResultRunRecordsId)) {
+    return Err(new ExplainableErr(SCLogsError.FIELD_MISSING_RUNRECORD));
+  }
+
   const basicResult = raw as SCLogsResult;
   if (!Array.isArray(basicResult.runRecords)) {
-    return Err(new ExplainableErr('runRecord must be an array'));
+    return Err(new ExplainableErr(SCLogsError.RUNRECORD_NOT_ARR));
   }
+
   // Validate json format
   if (!validateJSONLogConfig(basicResult.config)) {
     return Err(new ExplainableErr('Failed to parse log config'));
   }
-
   for (const rawRecord of basicResult.runRecords) {
     if (!validateJSONRunRecord(rawRecord)) {
       return Err(new ExplainableErr('Failed to parse runRecord', rawRecord));
     }
   }
+
+  // Data-related constraints
   const { runRecords } = basicResult;
-  validateRunRecords(runRecords).unwrap();
+  const constraintResults = validateRunRecords(runRecords);
+  if (constraintResults.err) {
+    return constraintResults;
+  }
 
   return Ok(raw as SCLogsResult);
 };
