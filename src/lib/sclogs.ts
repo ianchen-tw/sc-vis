@@ -68,25 +68,19 @@ export const validateRunRecords = (records: RunRecord[]): Result<boolean, Explai
 
   // Constraint: Created tasks must end
   const openTasks = new Set();
-
-  try {
-    records.forEach((r) => {
-      if (r.desc === 'created') {
-        if (openTasks.has(r.name)) {
-          Err(new ExplainableErr('task opened twice', r)).unwrap();
-        }
-        openTasks.add(r.name);
-      } else if (r.desc === 'exited') {
-        if (!openTasks.has(r.name)) {
-          Err(new ExplainableErr('Task close before open', r)).unwrap();
-        }
-        openTasks.delete(r.name);
+  for (const r of records) {
+    if (r.desc === 'created') {
+      if (openTasks.has(r.name)) {
+        return Err(new ExplainableErr('task opened twice', r));
       }
-    });
-  } catch (explainableErr) {
-    return Err(explainableErr as ExplainableErr);
+      openTasks.add(r.name);
+    } else if (r.desc === 'exited') {
+      if (!openTasks.has(r.name)) {
+        return Err(new ExplainableErr('Task close before open', r));
+      }
+      openTasks.delete(r.name);
+    }
   }
-
   if (openTasks.size > 0) {
     return Err(new ExplainableErr('Task not closed', [...openTasks]));
   }
@@ -105,28 +99,24 @@ export const validateRunRecords = (records: RunRecord[]): Result<boolean, Explai
 export const parseSCLogs = (json: any): Result<SCLogsResult, ExplainableErr> => {
   const raw = JSON.parse(json);
 
-  try {
-    ensurePropertyExists(raw, LogResultConfigId, 'sclogs');
-    ensurePropertyExists(raw, LogResultRunRecordsId, 'sclogs');
-    const basicResult = raw as SCLogsResult;
-    if (!Array.isArray(basicResult.runRecords)) {
-      Err(new ExplainableErr('runRecord must be an array')).unwrap();
-    }
-    // Validate json format
-    if (!validateJSONLogConfig(basicResult.config)) {
-      Err(new ExplainableErr('Failed to parse log config')).unwrap();
-    }
-    basicResult.runRecords.forEach((rawRecord) => {
-      if (!validateJSONRunRecord(rawRecord)) {
-        console.log(validateJSONRunRecord.errors);
-        console.log('record: ', rawRecord);
-        Err(new ExplainableErr('Failed to parse runRecord', rawRecord)).unwrap();
-      }
-    });
-    const { runRecords } = basicResult;
-    validateRunRecords(runRecords).unwrap();
-  } catch (explainableErr) {
-    return Err(explainableErr as ExplainableErr);
+  ensurePropertyExists(raw, LogResultConfigId, 'sclogs');
+  ensurePropertyExists(raw, LogResultRunRecordsId, 'sclogs');
+  const basicResult = raw as SCLogsResult;
+  if (!Array.isArray(basicResult.runRecords)) {
+    return Err(new ExplainableErr('runRecord must be an array'));
   }
+  // Validate json format
+  if (!validateJSONLogConfig(basicResult.config)) {
+    return Err(new ExplainableErr('Failed to parse log config'));
+  }
+
+  for (const rawRecord of basicResult.runRecords) {
+    if (!validateJSONRunRecord(rawRecord)) {
+      return Err(new ExplainableErr('Failed to parse runRecord', rawRecord));
+    }
+  }
+  const { runRecords } = basicResult;
+  validateRunRecords(runRecords).unwrap();
+
   return Ok(raw as SCLogsResult);
 };

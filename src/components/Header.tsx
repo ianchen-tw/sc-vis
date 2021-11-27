@@ -34,8 +34,11 @@ const UploadFileButton = (props: UploadFileButtonProps) => {
       props.onRecordsUpdate(records);
     } else {
       const err = result.val;
+      console.log(err);
       console.log(err.message);
-      console.log(err.hintObject);
+      if (err.hintObject !== undefined) {
+        console.log('hint object', err.hintObject);
+      }
     }
   };
   return (
