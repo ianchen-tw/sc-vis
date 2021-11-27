@@ -26,14 +26,15 @@ type UploadFileButtonProps = {
   onConfigUpdate: (data: LogConfig) => void
 }
 const UploadFileButton = (props: UploadFileButtonProps) => {
+  const { onConfigUpdate, onRecordsUpdate } = props;
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const onRecordDataUploaded = async (file: File) => {
     const result = parseSCLogs(await file.text());
     if (result.ok) {
       const { runRecords, config } = result.val;
-      props.onRecordsUpdate(runRecords);
-      props.onConfigUpdate(config);
+      onRecordsUpdate(runRecords);
+      onConfigUpdate(config);
     } else {
       const err = result.val;
       console.log(err);
