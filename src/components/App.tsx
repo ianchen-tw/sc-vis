@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useResizeObserver from 'use-resize-observer';
 
 import Header from './Header';
 import TaskDiagram from './TaskDiagram';
@@ -10,7 +11,10 @@ const defaultConfig: LogConfig = { makeDirectScopeTransparent: false };
 const App = () => {
   const [records, setRecords] = useState(defaultRunRecords);
   const [config, setConfig] = useState(defaultConfig);
+  const { ref, width, height } = useResizeObserver<HTMLDivElement>();
 
+  const finalWidth = (width ?? 0) * 1;
+  const finalHeight = (height ?? 0) * 0.8;
   return (
     <div className="container mx-auto px-4 h-screen flex flex-col">
       <div className="flex-none">
@@ -19,11 +23,13 @@ const App = () => {
           onConfigUpdate={(data) => setConfig(data)}
         />
       </div>
-      <div className="flex-grow ">
-        {/* <Visualize runRecords={records} /> */}
-        <div className="flex flex-row justify-center">
-          <TaskDiagram scopeTree={buildScopeTree(records)} visConfig={config} />
-        </div>
+      <div ref={ref} className="h-screen flex-grow justify-center">
+        <TaskDiagram
+          scopeTree={buildScopeTree(records)}
+          visConfig={config}
+          width={finalWidth}
+          height={finalHeight}
+        />
       </div>
     </div>
   );
