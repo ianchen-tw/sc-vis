@@ -63,10 +63,10 @@ describe('RunRecords validation', () => {
     resultShouldErrWith(validateRunRecords(input), msg);
   };
 
-  test('Should report task not closed', () => {
+  test('Should report node not closed', () => {
     expectErrMsg([
       {
-        time: 0.34, name: 'A', desc: 'created', type: 'scope', parent: undefined,
+        time: 0.34, name: 'A', desc: 'created', type: 'task', parent: undefined,
       },
     ], RunRecordError.NOT_CLOSED);
   });
