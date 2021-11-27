@@ -2,7 +2,7 @@ import { GoMarkGithub, GoCloudUpload } from 'react-icons/go';
 import { useRef } from 'react';
 
 import { RunRecord } from '../lib/runRecord';
-import { parseSCLogs } from '../lib/sclogs';
+import { parseSCLogs, LogConfig } from '../lib/sclogs';
 
 const LogoText = 'SC Visualizer';
 
@@ -22,7 +22,8 @@ const Logo = (props: LogoProps) => {
 };
 
 type UploadFileButtonProps = {
-  onRecordsUpdate: (data: RunRecord[]) => void
+  onRecordsUpdate: (data: RunRecord[]) => void,
+  onConfigUpdate: (data: LogConfig) => void
 }
 const UploadFileButton = (props: UploadFileButtonProps) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
@@ -30,8 +31,9 @@ const UploadFileButton = (props: UploadFileButtonProps) => {
   const onRecordDataUploaded = async (file: File) => {
     const result = parseSCLogs(await file.text());
     if (result.ok) {
-      const records = result.val.runRecords;
-      props.onRecordsUpdate(records);
+      const { runRecords, config } = result.val;
+      props.onRecordsUpdate(runRecords);
+      props.onConfigUpdate(config);
     } else {
       const err = result.val;
       console.log(err);
@@ -77,9 +79,10 @@ const GitHubLink = () => (
 
 type HeaderProps = {
   onRecordsUpdate: (data: RunRecord[]) => void;
+  onConfigUpdate: (data: LogConfig) => void;
 }
 const Header = (props: HeaderProps) => {
-  const { onRecordsUpdate } = props;
+  const { onRecordsUpdate, onConfigUpdate } = props;
   return (
     <header className="pt-5">
       <div className="max-w-container flex items-center m-2">
@@ -87,7 +90,10 @@ const Header = (props: HeaderProps) => {
           <Logo text={LogoText} />
         </div>
         <div className="flex-grow flex justify-end">
-          <UploadFileButton onRecordsUpdate={onRecordsUpdate} />
+          <UploadFileButton
+            onRecordsUpdate={onRecordsUpdate}
+            onConfigUpdate={onConfigUpdate}
+          />
           <GitHubLink />
         </div>
       </div>

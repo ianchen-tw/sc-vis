@@ -5,7 +5,7 @@ import {
   validateRunRecords,
   ExplainableErr,
 } from '../sclogs';
-import { TaskError } from '../err';
+import { RunRecordError } from '../err';
 
 describe.each([
   ['Optional', {}, true],
@@ -68,7 +68,7 @@ describe('RunRecords validation', () => {
       {
         time: 0.34, name: 'A', desc: 'created', type: 'scope', parent: undefined,
       },
-    ], TaskError.NOT_CLOSED);
+    ], RunRecordError.NOT_CLOSED);
   });
 
   test('Should report duplicated tasks', () => {
@@ -82,6 +82,6 @@ describe('RunRecords validation', () => {
       {
         time: 0.35, name: 'A', desc: 'exited', type: 'scope', parent: undefined,
       },
-    ], TaskError.DUPLICATED);
+    ], RunRecordError.DUPLICATED);
   });
 });

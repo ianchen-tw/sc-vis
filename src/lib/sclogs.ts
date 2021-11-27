@@ -1,6 +1,6 @@
 import { Ok, Err, Result } from 'ts-results';
 import Ajv, { JTDSchemaType } from 'ajv/dist/jtd';
-import { TaskError, SCLogsError } from './err';
+import { RunRecordError, SCLogsError } from './err';
 import { RunRecord } from './runRecord';
 
 const ajv = new Ajv();
@@ -60,22 +60,36 @@ export const validateRunRecords = (records: RunRecord[]): Result<boolean, Explai
   // Validate data constraints
 
   // Constraint: Created tasks must end
-  const openTasks = new Set();
+  const openNodes: Map<string, RunRecord> = new Map();
   for (const r of records) {
     if (r.desc === 'created') {
-      if (openTasks.has(r.name)) {
-        return Err(new ExplainableErr(TaskError.DUPLICATED, r));
+      if (openNodes.has(r.name)) {
+        return Err(new ExplainableErr(RunRecordError.DUPLICATED, r));
       }
-      openTasks.add(r.name);
+      openNodes.set(r.name, r);
     } else if (r.desc === 'exited') {
-      if (!openTasks.has(r.name)) {
-        return Err(new ExplainableErr(TaskError.CLOSE_VOID, r));
+      if (!openNodes.has(r.name)) {
+        return Err(new ExplainableErr(RunRecordError.CLOSE_VOID, r));
       }
-      openTasks.delete(r.name);
+      openNodes.delete(r.name);
     }
   }
-  if (openTasks.size > 0) {
-    return Err(new ExplainableErr(TaskError.NOT_CLOSED, [...openTasks]));
+  if (openNodes.size > 0) {
+    const leftScopes: RunRecord[] = [];
+    const leftTasks: RunRecord[] = [];
+    openNodes.forEach((r, _) => {
+      switch (r.type) {
+        case 'scope': leftScopes.push(r); break;
+        case 'task': leftTasks.push(r); break;
+      }
+    });
+    if (leftScopes.length > 0) {
+      console.log('warning: scope not closed', leftScopes);
+    }
+    // Only un-closed task leads to error
+    if (leftTasks.length > 0) {
+      return Err(new ExplainableErr(RunRecordError.NOT_CLOSED, [...openNodes]));
+    }
   }
   return Ok(true);
   // Constraint: Must reference node that previous defined

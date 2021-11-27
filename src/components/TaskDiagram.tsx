@@ -5,6 +5,7 @@ import ScopeArea from './viz/ScopeArea';
 import { reorderByScopes } from '../lib/layout';
 import XAxis from './viz/XAxis';
 import TaskLifeTime from './viz/TaskLifeTime';
+import { LogConfig } from '../lib/sclogs';
 
 const margin = {
   top: 20, right: 100, bottom: 20, left: 20,
@@ -14,13 +15,16 @@ type TaskDiagramProps = {
   width?: number;
   height?: number;
   scopeTree: VisNode;
+  visConfig: LogConfig;
 }
 
 const TaskDiagram = (props: TaskDiagramProps) => {
-  const { width = 1000, height = 800, scopeTree } = props;
+  const {
+    width = 600, height = 400, scopeTree, visConfig,
+  } = props;
 
   // const { tasks, scope_ranges } = reorder_by_scopes(data, scopes)
-  const { tasks, scopeResults } = reorderByScopes(scopeTree);
+  const { tasks, scopeResults } = reorderByScopes(scopeTree, visConfig);
 
   const maxEndTime = max(tasks.map((t) => t.lifespan.end ?? 0)) ?? 0;
 

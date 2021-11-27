@@ -1,14 +1,14 @@
 /* eslint max-classes-per-file: ["error", 999] */
 
 /**
- * Task related error strings
+ * RunRecord related error strings
  */
-export class TaskError {
-    public static readonly NOT_CLOSED = 'Task not closed';
+export class RunRecordError {
+    public static readonly NOT_CLOSED = 'Node not closed';
 
-    public static readonly CLOSE_VOID = 'Task close before open';
+    public static readonly CLOSE_VOID = 'Node close before open';
 
-    public static readonly DUPLICATED = 'Task opened twice';
+    public static readonly DUPLICATED = 'Node opened twice';
 }
 
 export class SCLogsError {
