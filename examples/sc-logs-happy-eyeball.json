@@ -1,0 +1,201 @@
+{
+    "config": {
+        "makeDirectScopeTransparent": true
+    },
+    "runRecords": [
+        {
+            "time": 0,
+            "desc": "created",
+            "name": "fetch_resource-0__TRIO_VIS_Tscope",
+            "type": "scope"
+        },
+        {
+            "time": 1,
+            "desc": "created",
+            "name": "fetch_resource-0",
+            "type": "task",
+            "parent": "fetch_resource-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 2,
+            "desc": "created",
+            "name": "nursery-0",
+            "type": "scope",
+            "parent": "fetch_resource-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 3,
+            "desc": "created",
+            "name": "open_tcp_socket-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-0"
+        },
+        {
+            "time": 4,
+            "desc": "created",
+            "name": "open_tcp_socket-0",
+            "type": "task",
+            "parent": "open_tcp_socket-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 5,
+            "desc": "created",
+            "name": "nursery-1",
+            "type": "scope",
+            "parent": "open_tcp_socket-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 6,
+            "desc": "created",
+            "name": "attempt-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 7,
+            "desc": "created",
+            "name": "attempt-0",
+            "type": "task",
+            "parent": "attempt-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 8,
+            "desc": "created",
+            "name": "attempt-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 9,
+            "desc": "created",
+            "name": "attempt-1",
+            "type": "task",
+            "parent": "attempt-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 10,
+            "desc": "exited",
+            "name": "attempt-0",
+            "type": "task",
+            "parent": "attempt-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 11,
+            "desc": "exited",
+            "name": "attempt-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 12,
+            "desc": "created",
+            "name": "attempt-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 13,
+            "desc": "created",
+            "name": "attempt-2",
+            "type": "task",
+            "parent": "attempt-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 14,
+            "desc": "exited",
+            "name": "attempt-1",
+            "type": "task",
+            "parent": "attempt-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 15,
+            "desc": "exited",
+            "name": "attempt-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 16,
+            "desc": "created",
+            "name": "attempt-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 17,
+            "desc": "created",
+            "name": "attempt-3",
+            "type": "task",
+            "parent": "attempt-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 18,
+            "desc": "exited",
+            "name": "attempt-2",
+            "type": "task",
+            "parent": "attempt-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 19,
+            "desc": "exited",
+            "name": "attempt-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 20,
+            "desc": "exited",
+            "name": "attempt-3",
+            "type": "task",
+            "parent": "attempt-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 21,
+            "desc": "exited",
+            "name": "attempt-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 22,
+            "desc": "exited",
+            "name": "nursery-1",
+            "type": "scope",
+            "parent": "open_tcp_socket-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 23,
+            "desc": "exited",
+            "name": "open_tcp_socket-0",
+            "type": "task",
+            "parent": "open_tcp_socket-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 24,
+            "desc": "exited",
+            "name": "open_tcp_socket-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-0"
+        },
+        {
+            "time": 25,
+            "desc": "exited",
+            "name": "nursery-0",
+            "type": "scope",
+            "parent": "fetch_resource-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 26,
+            "desc": "exited",
+            "name": "fetch_resource-0",
+            "type": "task",
+            "parent": "fetch_resource-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 27,
+            "desc": "exited",
+            "name": "fetch_resource-0__TRIO_VIS_Tscope",
+            "type": "task"
+        }
+    ]
+}

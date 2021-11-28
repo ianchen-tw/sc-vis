@@ -19,7 +19,6 @@ However, the visulizer interfould be language-agnostic (at least the format of t
 3. Upload your log output (`logs.json`) generated from [trio-vis]
 4. See your result in the browser panel.
 
-
 ## Try
 
-Upload `examples/happyeyeball.json` to see example output.
+Upload `examples/sc-logs-err-control.json` to see example output.
