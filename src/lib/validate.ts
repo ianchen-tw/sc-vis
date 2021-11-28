@@ -1,7 +1,7 @@
 import { Ok, Err, Result } from 'ts-results';
 import Ajv, { JTDSchemaType } from 'ajv/dist/jtd';
-import { RunRecordError, SCLogsError } from './err';
-import { RunRecord } from './runRecord';
+import { RunRecordErrStr, SCLogsErrStr } from './const';
+import { RunRecord } from './types';
 
 const ajv = new Ajv();
 
@@ -27,8 +27,8 @@ export const SchemaRunRecord: JTDSchemaType<RunRecord> = {
   },
 };
 
-export const validateJSONLogConfig = ajv.compile(SchemaLogConfig);
-export const validateJSONRunRecord = ajv.compile(SchemaRunRecord);
+export const ajvValidateJSONLogConfig = ajv.compile(SchemaLogConfig);
+export const ajvValidateJSONRunRecord = ajv.compile(SchemaRunRecord);
 
 export interface SCLogsResult {
   config: LogConfig;
@@ -64,12 +64,12 @@ export const validateRunRecords = (records: RunRecord[]): Result<boolean, Explai
   for (const r of records) {
     if (r.desc === 'created') {
       if (openNodes.has(r.name)) {
-        return Err(new ExplainableErr(RunRecordError.DUPLICATED, r));
+        return Err(new ExplainableErr(RunRecordErrStr.DUPLICATED, r));
       }
       openNodes.set(r.name, r);
     } else if (r.desc === 'exited') {
       if (!openNodes.has(r.name)) {
-        return Err(new ExplainableErr(RunRecordError.CLOSE_VOID, r));
+        return Err(new ExplainableErr(RunRecordErrStr.CLOSE_VOID, r));
       }
       openNodes.delete(r.name);
     }
@@ -88,7 +88,7 @@ export const validateRunRecords = (records: RunRecord[]): Result<boolean, Explai
     }
     // Only un-closed task leads to error
     if (leftTasks.length > 0) {
-      return Err(new ExplainableErr(RunRecordError.NOT_CLOSED, [...openNodes]));
+      return Err(new ExplainableErr(RunRecordErrStr.NOT_CLOSED, [...openNodes]));
     }
   }
   return Ok(true);
@@ -103,27 +103,27 @@ export const validateRunRecords = (records: RunRecord[]): Result<boolean, Explai
  * @param json an object for validation as an SCLogsResult
  * @returns None
  */
-export const parseSCLogs = (json: any): Result<SCLogsResult, ExplainableErr> => {
+export const validateSCLogs = (json: any): Result<SCLogsResult, ExplainableErr> => {
   const raw = JSON.parse(json);
 
   if (!propertyExists(raw, LogResultConfigId)) {
-    return Err(new ExplainableErr(SCLogsError.FIELD_MISSING_CONFIG));
+    return Err(new ExplainableErr(SCLogsErrStr.FIELD_MISSING_CONFIG));
   }
   if (!propertyExists(raw, LogResultRunRecordsId)) {
-    return Err(new ExplainableErr(SCLogsError.FIELD_MISSING_RUNRECORD));
+    return Err(new ExplainableErr(SCLogsErrStr.FIELD_MISSING_RUNRECORD));
   }
 
   const basicResult = raw as SCLogsResult;
   if (!Array.isArray(basicResult.runRecords)) {
-    return Err(new ExplainableErr(SCLogsError.RUNRECORD_NOT_ARR));
+    return Err(new ExplainableErr(SCLogsErrStr.RUNRECORD_NOT_ARR));
   }
 
   // Validate json format
-  if (!validateJSONLogConfig(basicResult.config)) {
+  if (!ajvValidateJSONLogConfig(basicResult.config)) {
     return Err(new ExplainableErr('Failed to parse log config'));
   }
   for (const rawRecord of basicResult.runRecords) {
-    if (!validateJSONRunRecord(rawRecord)) {
+    if (!ajvValidateJSONRunRecord(rawRecord)) {
       return Err(new ExplainableErr('Failed to parse runRecord', rawRecord));
     }
   }

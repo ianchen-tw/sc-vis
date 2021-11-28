@@ -1,8 +1,8 @@
 import { GoMarkGithub, GoCloudUpload } from 'react-icons/go';
 import { useRef } from 'react';
 
-import { RunRecord } from '../lib/runRecord';
-import { parseSCLogs, LogConfig } from '../lib/sclogs';
+import { RunRecord } from '../lib/types';
+import { validateSCLogs, LogConfig } from '../lib/validate';
 
 const LogoText = 'SC Visualizer';
 
@@ -30,7 +30,7 @@ const UploadFileButton = (props: UploadFileButtonProps) => {
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
   const onRecordDataUploaded = async (file: File) => {
-    const result = parseSCLogs(await file.text());
+    const result = validateSCLogs(await file.text());
     if (result.ok) {
       const { runRecords, config } = result.val;
       onRecordsUpdate(runRecords);

@@ -3,8 +3,9 @@ import useResizeObserver from 'use-resize-observer';
 
 import Header from './Header';
 import TaskDiagram from './TaskDiagram';
-import { defaultRunRecords, buildScopeTree } from '../lib/runRecord';
-import { LogConfig } from '../lib/sclogs';
+import { buildScopeTree } from '../lib/scopeTree';
+import defaultRunRecords from '../lib/defaultRecords';
+import { LogConfig } from '../lib/validate';
 
 const defaultConfig: LogConfig = { makeDirectScopeTransparent: false };
 

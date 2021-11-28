@@ -1,11 +1,11 @@
 import { max } from 'd3-array';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { VisNode } from '../lib/scope';
+import { VisNode } from '../lib/scopeTree';
 import ScopeArea from './viz/ScopeArea';
-import { reorderByScopes } from '../lib/layout';
+import { renderLayout } from '../lib/render';
 import XAxis from './viz/XAxis';
 import TaskLifeTime from './viz/TaskLifeTime';
-import { LogConfig } from '../lib/sclogs';
+import { LogConfig } from '../lib/validate';
 
 const margin = {
   top: 20, right: 100, bottom: 20, left: 20,
@@ -23,8 +23,7 @@ const TaskDiagram = (props: TaskDiagramProps) => {
     width = 600, height = 400, scopeTree, visConfig,
   } = props;
 
-  // const { tasks, scope_ranges } = reorder_by_scopes(data, scopes)
-  const { tasks, scopeResults } = reorderByScopes(scopeTree, visConfig);
+  const { tasks, scopeResults } = renderLayout(scopeTree, visConfig);
 
   const maxEndTime = max(tasks.map((t) => t.lifespan.end ?? 0)) ?? 0;
 

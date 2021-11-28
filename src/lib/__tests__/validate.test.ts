@@ -1,11 +1,11 @@
 import { Result } from 'ts-results';
 import {
-  validateJSONLogConfig,
-  validateJSONRunRecord,
+  ajvValidateJSONLogConfig,
+  ajvValidateJSONRunRecord,
   validateRunRecords,
   ExplainableErr,
-} from '../sclogs';
-import { RunRecordError } from '../err';
+} from '../validate';
+import { RunRecordErrStr } from '../const';
 
 describe.each([
   ['Optional', {}, true],
@@ -14,7 +14,7 @@ describe.each([
   ['Extra fields', { makeDirectScopeTransparent: true, aa: 123 }, false],
 ])('Ajv LogConfig parsing', (caseName: string, obj: any, expected: boolean) => {
   test(`case: ${caseName}`, () => {
-    expect(validateJSONLogConfig(obj)).toBe(expected);
+    expect(ajvValidateJSONLogConfig(obj)).toBe(expected);
   });
 });
 
@@ -44,7 +44,7 @@ describe.each([
     const obj = {
       time, name, desc, type, parent,
     };
-    expect(validateJSONRunRecord(obj)).toBe(expected);
+    expect(ajvValidateJSONRunRecord(obj)).toBe(expected);
   });
 });
 
@@ -68,7 +68,7 @@ describe('RunRecords validation', () => {
       {
         time: 0.34, name: 'A', desc: 'created', type: 'task', parent: undefined,
       },
-    ], RunRecordError.NOT_CLOSED);
+    ], RunRecordErrStr.NOT_CLOSED);
   });
 
   test('Should report duplicated tasks', () => {
@@ -82,6 +82,6 @@ describe('RunRecords validation', () => {
       {
         time: 0.35, name: 'A', desc: 'exited', type: 'scope', parent: undefined,
       },
-    ], RunRecordError.DUPLICATED);
+    ], RunRecordErrStr.DUPLICATED);
   });
 });

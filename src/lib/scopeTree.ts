@@ -1,4 +1,4 @@
-export type VisNodeType = 'task' | 'scope'
+import { VisNodeType, RunRecord } from "./types";
 
 export interface LifeSpan {
   start: number;
@@ -72,3 +72,32 @@ export class VisNode {
     }
   }
 }
+
+export const NAME_ROOT_SCOPE = '__SC_VIS_ROOT_SCOPE__';
+
+/**
+ * Build an scope Tree based on record given
+ *  ps. would create a synthetic root node to contains all nodes given
+ * @param records list of runrecords
+ * @returns Rootnode of the ScopeTree
+ */
+export const buildScopeTree = (records: RunRecord[]): VisNode => {
+  const rootScope: VisNode = new VisNode(NAME_ROOT_SCOPE, 'scope', 0, undefined);
+  const scopeTable = new Map<string, VisNode>();
+
+  scopeTable.set(NAME_ROOT_SCOPE, rootScope);
+
+  records.forEach((record) => {
+    if (record.desc === 'created') {
+      const parent = scopeTable.get(record.parent ?? NAME_ROOT_SCOPE) ?? rootScope;
+
+      const s = new VisNode(record.name, record.type, record.time, parent);
+      scopeTable.set(s.name, s);
+    } else if (record.desc === 'exited') {
+      scopeTable.get(record.name)?.end(record.time);
+    } else {
+      throw new Error(`unknown desc: ${record}`);
+    }
+  });
+  return rootScope;
+};

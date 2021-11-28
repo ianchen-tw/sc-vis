@@ -1,7 +1,6 @@
 import { HierarchyNode, hierarchy } from 'd3-hierarchy';
-import { VisNode } from './scope';
-import { NAME_ROOT_SCOPE } from './runRecord';
-import { LogConfig } from './sclogs';
+import { NAME_ROOT_SCOPE, VisNode } from './scopeTree';
+import { LogConfig } from './validate';
 
 export interface ScopeResult {
   startTask: string;
@@ -19,7 +18,7 @@ export interface ReorderResult {
   scopeResults: ScopeResult[]
 }
 
-export const reorderByScopes = (scopeTree: VisNode, visConfig: LogConfig): ReorderResult => {
+export const renderLayout = (scopeTree: VisNode, visConfig: LogConfig): ReorderResult => {
   const root = hierarchy<VisNode>(scopeTree);
 
   root.sum((d) => (d.type === 'task' ? 1 : 0))
@@ -66,7 +65,8 @@ export const reorderByScopes = (scopeTree: VisNode, visConfig: LogConfig): Reord
       && visScope.children.length === 1
       && visScope.children[0].type === 'task'
     ) {
-      // This is an impl specific behavior (Python-trio)
+      // For implementation like Python Trio, some scope are generated in the air.
+      // In that case, we will make those scopes transparent
       scopeTable.delete(visScope);
     }
   };
