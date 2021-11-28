@@ -1,4 +1,4 @@
-import { VisNodeType, RunRecord } from "./types";
+import { VisNodeType, RunRecord } from './types';
 
 export interface LifeSpan {
   start: number;
