@@ -1,0 +1,1216 @@
+{
+    "config": {
+        "makeDirectScopeTransparent": true
+    },
+    "runRecords": [
+        {
+            "time": 0,
+            "desc": "created",
+            "name": "start_control-0__TRIO_VIS_Tscope",
+            "type": "scope"
+        },
+        {
+            "time": 1,
+            "desc": "created",
+            "name": "start_control-0",
+            "type": "task",
+            "parent": "start_control-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 2,
+            "desc": "created",
+            "name": "nursery-0",
+            "type": "scope",
+            "parent": "start_control-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 3,
+            "desc": "created",
+            "name": "task_control_child-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-0"
+        },
+        {
+            "time": 4,
+            "desc": "created",
+            "name": "task_control_child-0",
+            "type": "task",
+            "parent": "task_control_child-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 5,
+            "desc": "created",
+            "name": "task_control_child-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-0"
+        },
+        {
+            "time": 6,
+            "desc": "created",
+            "name": "task_control_child-1",
+            "type": "task",
+            "parent": "task_control_child-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 7,
+            "desc": "created",
+            "name": "task_control_child-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-0"
+        },
+        {
+            "time": 8,
+            "desc": "created",
+            "name": "task_control_child-2",
+            "type": "task",
+            "parent": "task_control_child-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 9,
+            "desc": "created",
+            "name": "nursery-1",
+            "type": "scope",
+            "parent": "task_control_child-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 10,
+            "desc": "created",
+            "name": "job_monitor-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 11,
+            "desc": "created",
+            "name": "job_monitor-0",
+            "type": "task",
+            "parent": "job_monitor-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 12,
+            "desc": "created",
+            "name": "start-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 13,
+            "desc": "created",
+            "name": "start-0",
+            "type": "task",
+            "parent": "start-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 14,
+            "desc": "created",
+            "name": "nursery-2",
+            "type": "scope",
+            "parent": "task_control_child-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 15,
+            "desc": "created",
+            "name": "job_monitor-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-2"
+        },
+        {
+            "time": 16,
+            "desc": "created",
+            "name": "job_monitor-1",
+            "type": "task",
+            "parent": "job_monitor-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 17,
+            "desc": "created",
+            "name": "start-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-2"
+        },
+        {
+            "time": 18,
+            "desc": "created",
+            "name": "start-1",
+            "type": "task",
+            "parent": "start-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 19,
+            "desc": "created",
+            "name": "nursery-3",
+            "type": "scope",
+            "parent": "task_control_child-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 20,
+            "desc": "created",
+            "name": "job_monitor-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-3"
+        },
+        {
+            "time": 21,
+            "desc": "created",
+            "name": "job_monitor-2",
+            "type": "task",
+            "parent": "job_monitor-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 22,
+            "desc": "created",
+            "name": "start-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-3"
+        },
+        {
+            "time": 23,
+            "desc": "created",
+            "name": "start-2",
+            "type": "task",
+            "parent": "start-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 24,
+            "desc": "created",
+            "name": "nursery-4",
+            "type": "scope",
+            "parent": "start-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 25,
+            "desc": "created",
+            "name": "communiate-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-4"
+        },
+        {
+            "time": 26,
+            "desc": "created",
+            "name": "communiate-0",
+            "type": "task",
+            "parent": "communiate-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 27,
+            "desc": "created",
+            "name": "error_rate_tick-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-4"
+        },
+        {
+            "time": 28,
+            "desc": "created",
+            "name": "error_rate_tick-0",
+            "type": "task",
+            "parent": "error_rate_tick-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 29,
+            "desc": "created",
+            "name": "nursery-5",
+            "type": "scope",
+            "parent": "start-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 30,
+            "desc": "created",
+            "name": "communiate-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-5"
+        },
+        {
+            "time": 31,
+            "desc": "created",
+            "name": "communiate-1",
+            "type": "task",
+            "parent": "communiate-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 32,
+            "desc": "created",
+            "name": "error_rate_tick-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-5"
+        },
+        {
+            "time": 33,
+            "desc": "created",
+            "name": "error_rate_tick-1",
+            "type": "task",
+            "parent": "error_rate_tick-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 34,
+            "desc": "created",
+            "name": "nursery-6",
+            "type": "scope",
+            "parent": "start-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 35,
+            "desc": "created",
+            "name": "communiate-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-6"
+        },
+        {
+            "time": 36,
+            "desc": "created",
+            "name": "communiate-2",
+            "type": "task",
+            "parent": "communiate-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 37,
+            "desc": "created",
+            "name": "error_rate_tick-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-6"
+        },
+        {
+            "time": 38,
+            "desc": "created",
+            "name": "error_rate_tick-2",
+            "type": "task",
+            "parent": "error_rate_tick-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 39,
+            "desc": "exited",
+            "name": "error_rate_tick-0",
+            "type": "task",
+            "parent": "error_rate_tick-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 40,
+            "desc": "exited",
+            "name": "error_rate_tick-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-4"
+        },
+        {
+            "time": 41,
+            "desc": "exited",
+            "name": "job_monitor-0",
+            "type": "task",
+            "parent": "job_monitor-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 42,
+            "desc": "exited",
+            "name": "job_monitor-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 43,
+            "desc": "exited",
+            "name": "communiate-0",
+            "type": "task",
+            "parent": "communiate-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 44,
+            "desc": "exited",
+            "name": "communiate-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-4"
+        },
+        {
+            "time": 45,
+            "desc": "exited",
+            "name": "nursery-4",
+            "type": "scope",
+            "parent": "start-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 46,
+            "desc": "exited",
+            "name": "start-0",
+            "type": "task",
+            "parent": "start-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 47,
+            "desc": "exited",
+            "name": "start-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-1"
+        },
+        {
+            "time": 48,
+            "desc": "created",
+            "name": "nursery-7",
+            "type": "scope",
+            "parent": "task_control_child-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 49,
+            "desc": "created",
+            "name": "job_monitor-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-7"
+        },
+        {
+            "time": 50,
+            "desc": "created",
+            "name": "job_monitor-3",
+            "type": "task",
+            "parent": "job_monitor-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 51,
+            "desc": "created",
+            "name": "start-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-7"
+        },
+        {
+            "time": 52,
+            "desc": "created",
+            "name": "start-3",
+            "type": "task",
+            "parent": "start-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 53,
+            "desc": "created",
+            "name": "nursery-8",
+            "type": "scope",
+            "parent": "start-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 54,
+            "desc": "created",
+            "name": "communiate-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-8"
+        },
+        {
+            "time": 55,
+            "desc": "created",
+            "name": "communiate-3",
+            "type": "task",
+            "parent": "communiate-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 56,
+            "desc": "created",
+            "name": "error_rate_tick-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-8"
+        },
+        {
+            "time": 57,
+            "desc": "created",
+            "name": "error_rate_tick-3",
+            "type": "task",
+            "parent": "error_rate_tick-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 58,
+            "desc": "exited",
+            "name": "error_rate_tick-2",
+            "type": "task",
+            "parent": "error_rate_tick-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 59,
+            "desc": "exited",
+            "name": "error_rate_tick-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-6"
+        },
+        {
+            "time": 60,
+            "desc": "exited",
+            "name": "job_monitor-2",
+            "type": "task",
+            "parent": "job_monitor-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 61,
+            "desc": "exited",
+            "name": "job_monitor-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-3"
+        },
+        {
+            "time": 62,
+            "desc": "exited",
+            "name": "communiate-2",
+            "type": "task",
+            "parent": "communiate-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 63,
+            "desc": "exited",
+            "name": "communiate-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-6"
+        },
+        {
+            "time": 64,
+            "desc": "exited",
+            "name": "nursery-6",
+            "type": "scope",
+            "parent": "start-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 65,
+            "desc": "exited",
+            "name": "start-2",
+            "type": "task",
+            "parent": "start-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 66,
+            "desc": "exited",
+            "name": "start-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-3"
+        },
+        {
+            "time": 67,
+            "desc": "created",
+            "name": "nursery-9",
+            "type": "scope",
+            "parent": "task_control_child-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 68,
+            "desc": "created",
+            "name": "job_monitor-4__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-9"
+        },
+        {
+            "time": 69,
+            "desc": "created",
+            "name": "job_monitor-4",
+            "type": "task",
+            "parent": "job_monitor-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 70,
+            "desc": "created",
+            "name": "start-4__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-9"
+        },
+        {
+            "time": 71,
+            "desc": "created",
+            "name": "start-4",
+            "type": "task",
+            "parent": "start-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 72,
+            "desc": "created",
+            "name": "nursery-10",
+            "type": "scope",
+            "parent": "start-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 73,
+            "desc": "created",
+            "name": "communiate-4__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-10"
+        },
+        {
+            "time": 74,
+            "desc": "created",
+            "name": "communiate-4",
+            "type": "task",
+            "parent": "communiate-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 75,
+            "desc": "created",
+            "name": "error_rate_tick-4__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-10"
+        },
+        {
+            "time": 76,
+            "desc": "created",
+            "name": "error_rate_tick-4",
+            "type": "task",
+            "parent": "error_rate_tick-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 77,
+            "desc": "exited",
+            "name": "error_rate_tick-1",
+            "type": "task",
+            "parent": "error_rate_tick-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 78,
+            "desc": "exited",
+            "name": "error_rate_tick-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-5"
+        },
+        {
+            "time": 79,
+            "desc": "exited",
+            "name": "job_monitor-1",
+            "type": "task",
+            "parent": "job_monitor-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 80,
+            "desc": "exited",
+            "name": "job_monitor-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-2"
+        },
+        {
+            "time": 81,
+            "desc": "exited",
+            "name": "communiate-1",
+            "type": "task",
+            "parent": "communiate-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 82,
+            "desc": "exited",
+            "name": "communiate-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-5"
+        },
+        {
+            "time": 83,
+            "desc": "exited",
+            "name": "nursery-5",
+            "type": "scope",
+            "parent": "start-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 84,
+            "desc": "exited",
+            "name": "start-1",
+            "type": "task",
+            "parent": "start-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 85,
+            "desc": "exited",
+            "name": "start-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-2"
+        },
+        {
+            "time": 86,
+            "desc": "created",
+            "name": "nursery-11",
+            "type": "scope",
+            "parent": "task_control_child-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 87,
+            "desc": "created",
+            "name": "job_monitor-5__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-11"
+        },
+        {
+            "time": 88,
+            "desc": "created",
+            "name": "job_monitor-5",
+            "type": "task",
+            "parent": "job_monitor-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 89,
+            "desc": "created",
+            "name": "start-5__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-11"
+        },
+        {
+            "time": 90,
+            "desc": "created",
+            "name": "start-5",
+            "type": "task",
+            "parent": "start-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 91,
+            "desc": "created",
+            "name": "nursery-12",
+            "type": "scope",
+            "parent": "start-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 92,
+            "desc": "created",
+            "name": "communiate-5__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-12"
+        },
+        {
+            "time": 93,
+            "desc": "created",
+            "name": "communiate-5",
+            "type": "task",
+            "parent": "communiate-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 94,
+            "desc": "created",
+            "name": "error_rate_tick-5__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-12"
+        },
+        {
+            "time": 95,
+            "desc": "created",
+            "name": "error_rate_tick-5",
+            "type": "task",
+            "parent": "error_rate_tick-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 96,
+            "desc": "exited",
+            "name": "error_rate_tick-3",
+            "type": "task",
+            "parent": "error_rate_tick-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 97,
+            "desc": "exited",
+            "name": "error_rate_tick-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-8"
+        },
+        {
+            "time": 98,
+            "desc": "exited",
+            "name": "job_monitor-3",
+            "type": "task",
+            "parent": "job_monitor-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 99,
+            "desc": "exited",
+            "name": "job_monitor-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-7"
+        },
+        {
+            "time": 100,
+            "desc": "exited",
+            "name": "communiate-3",
+            "type": "task",
+            "parent": "communiate-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 101,
+            "desc": "exited",
+            "name": "communiate-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-8"
+        },
+        {
+            "time": 102,
+            "desc": "exited",
+            "name": "nursery-8",
+            "type": "scope",
+            "parent": "start-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 103,
+            "desc": "exited",
+            "name": "start-3",
+            "type": "task",
+            "parent": "start-3__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 104,
+            "desc": "exited",
+            "name": "start-3__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-7"
+        },
+        {
+            "time": 105,
+            "desc": "created",
+            "name": "nursery-13",
+            "type": "scope",
+            "parent": "task_control_child-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 106,
+            "desc": "created",
+            "name": "job_monitor-6__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-13"
+        },
+        {
+            "time": 107,
+            "desc": "created",
+            "name": "job_monitor-6",
+            "type": "task",
+            "parent": "job_monitor-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 108,
+            "desc": "created",
+            "name": "start-6__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-13"
+        },
+        {
+            "time": 109,
+            "desc": "created",
+            "name": "start-6",
+            "type": "task",
+            "parent": "start-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 110,
+            "desc": "created",
+            "name": "nursery-14",
+            "type": "scope",
+            "parent": "start-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 111,
+            "desc": "created",
+            "name": "communiate-6__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-14"
+        },
+        {
+            "time": 112,
+            "desc": "created",
+            "name": "communiate-6",
+            "type": "task",
+            "parent": "communiate-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 113,
+            "desc": "created",
+            "name": "error_rate_tick-6__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-14"
+        },
+        {
+            "time": 114,
+            "desc": "created",
+            "name": "error_rate_tick-6",
+            "type": "task",
+            "parent": "error_rate_tick-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 115,
+            "desc": "exited",
+            "name": "error_rate_tick-6",
+            "type": "task",
+            "parent": "error_rate_tick-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 116,
+            "desc": "exited",
+            "name": "error_rate_tick-6__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-14"
+        },
+        {
+            "time": 117,
+            "desc": "exited",
+            "name": "job_monitor-6",
+            "type": "task",
+            "parent": "job_monitor-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 118,
+            "desc": "exited",
+            "name": "job_monitor-6__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-13"
+        },
+        {
+            "time": 119,
+            "desc": "exited",
+            "name": "communiate-6",
+            "type": "task",
+            "parent": "communiate-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 120,
+            "desc": "exited",
+            "name": "communiate-6__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-14"
+        },
+        {
+            "time": 121,
+            "desc": "exited",
+            "name": "nursery-14",
+            "type": "scope",
+            "parent": "start-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 122,
+            "desc": "exited",
+            "name": "start-6",
+            "type": "task",
+            "parent": "start-6__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 123,
+            "desc": "exited",
+            "name": "start-6__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-13"
+        },
+        {
+            "time": 124,
+            "desc": "created",
+            "name": "nursery-15",
+            "type": "scope",
+            "parent": "task_control_child-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 125,
+            "desc": "created",
+            "name": "job_monitor-7__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-15"
+        },
+        {
+            "time": 126,
+            "desc": "created",
+            "name": "job_monitor-7",
+            "type": "task",
+            "parent": "job_monitor-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 127,
+            "desc": "created",
+            "name": "start-7__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-15"
+        },
+        {
+            "time": 128,
+            "desc": "created",
+            "name": "start-7",
+            "type": "task",
+            "parent": "start-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 129,
+            "desc": "created",
+            "name": "nursery-16",
+            "type": "scope",
+            "parent": "start-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 130,
+            "desc": "created",
+            "name": "communiate-7__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-16"
+        },
+        {
+            "time": 131,
+            "desc": "created",
+            "name": "communiate-7",
+            "type": "task",
+            "parent": "communiate-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 132,
+            "desc": "created",
+            "name": "error_rate_tick-7__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-16"
+        },
+        {
+            "time": 133,
+            "desc": "created",
+            "name": "error_rate_tick-7",
+            "type": "task",
+            "parent": "error_rate_tick-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 134,
+            "desc": "exited",
+            "name": "error_rate_tick-4",
+            "type": "task",
+            "parent": "error_rate_tick-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 135,
+            "desc": "exited",
+            "name": "error_rate_tick-4__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-10"
+        },
+        {
+            "time": 136,
+            "desc": "exited",
+            "name": "job_monitor-4",
+            "type": "task",
+            "parent": "job_monitor-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 137,
+            "desc": "exited",
+            "name": "job_monitor-4__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-9"
+        },
+        {
+            "time": 138,
+            "desc": "exited",
+            "name": "error_rate_tick-5",
+            "type": "task",
+            "parent": "error_rate_tick-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 139,
+            "desc": "exited",
+            "name": "error_rate_tick-5__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-12"
+        },
+        {
+            "time": 140,
+            "desc": "exited",
+            "name": "job_monitor-5",
+            "type": "task",
+            "parent": "job_monitor-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 141,
+            "desc": "exited",
+            "name": "job_monitor-5__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-11"
+        },
+        {
+            "time": 142,
+            "desc": "exited",
+            "name": "error_rate_tick-7",
+            "type": "task",
+            "parent": "error_rate_tick-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 143,
+            "desc": "exited",
+            "name": "error_rate_tick-7__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-16"
+        },
+        {
+            "time": 144,
+            "desc": "exited",
+            "name": "job_monitor-7",
+            "type": "task",
+            "parent": "job_monitor-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 145,
+            "desc": "exited",
+            "name": "job_monitor-7__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-15"
+        },
+        {
+            "time": 146,
+            "desc": "exited",
+            "name": "communiate-4",
+            "type": "task",
+            "parent": "communiate-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 147,
+            "desc": "exited",
+            "name": "communiate-4__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-10"
+        },
+        {
+            "time": 148,
+            "desc": "exited",
+            "name": "communiate-5",
+            "type": "task",
+            "parent": "communiate-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 149,
+            "desc": "exited",
+            "name": "communiate-5__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-12"
+        },
+        {
+            "time": 150,
+            "desc": "exited",
+            "name": "communiate-7",
+            "type": "task",
+            "parent": "communiate-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 151,
+            "desc": "exited",
+            "name": "communiate-7__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-16"
+        },
+        {
+            "time": 152,
+            "desc": "exited",
+            "name": "nursery-16",
+            "type": "scope",
+            "parent": "start-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 153,
+            "desc": "exited",
+            "name": "start-7",
+            "type": "task",
+            "parent": "start-7__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 154,
+            "desc": "exited",
+            "name": "start-7__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-15"
+        },
+        {
+            "time": 155,
+            "desc": "exited",
+            "name": "nursery-12",
+            "type": "scope",
+            "parent": "start-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 156,
+            "desc": "exited",
+            "name": "start-5",
+            "type": "task",
+            "parent": "start-5__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 157,
+            "desc": "exited",
+            "name": "start-5__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-11"
+        },
+        {
+            "time": 158,
+            "desc": "exited",
+            "name": "nursery-10",
+            "type": "scope",
+            "parent": "start-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 159,
+            "desc": "exited",
+            "name": "start-4",
+            "type": "task",
+            "parent": "start-4__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 160,
+            "desc": "exited",
+            "name": "start-4__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-9"
+        },
+        {
+            "time": 161,
+            "desc": "exited",
+            "name": "nursery-15",
+            "type": "scope",
+            "parent": "task_control_child-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 162,
+            "desc": "exited",
+            "name": "task_control_child-2",
+            "type": "task",
+            "parent": "task_control_child-2__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 163,
+            "desc": "exited",
+            "name": "task_control_child-2__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-0"
+        },
+        {
+            "time": 164,
+            "desc": "exited",
+            "name": "nursery-11",
+            "type": "scope",
+            "parent": "task_control_child-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 165,
+            "desc": "exited",
+            "name": "task_control_child-1",
+            "type": "task",
+            "parent": "task_control_child-1__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 166,
+            "desc": "exited",
+            "name": "task_control_child-1__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-0"
+        },
+        {
+            "time": 167,
+            "desc": "exited",
+            "name": "nursery-9",
+            "type": "scope",
+            "parent": "task_control_child-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 168,
+            "desc": "exited",
+            "name": "task_control_child-0",
+            "type": "task",
+            "parent": "task_control_child-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 169,
+            "desc": "exited",
+            "name": "task_control_child-0__TRIO_VIS_Tscope",
+            "type": "scope",
+            "parent": "nursery-0"
+        },
+        {
+            "time": 170,
+            "desc": "exited",
+            "name": "nursery-0",
+            "type": "scope",
+            "parent": "start_control-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 171,
+            "desc": "exited",
+            "name": "start_control-0",
+            "type": "task",
+            "parent": "start_control-0__TRIO_VIS_Tscope"
+        },
+        {
+            "time": 172,
+            "desc": "exited",
+            "name": "start_control-0__TRIO_VIS_Tscope",
+            "type": "task"
+        }
+    ]
+}

@@ -1,0 +1,1069 @@
+{
+  "config": {
+    "makeDirectScopeTransparent": true
+  },
+  "runRecords": [
+    {
+      "time": 0,
+      "desc": "created",
+      "name": "main-0__TRIO_VIS_Tscope",
+      "type": "scope"
+    },
+    {
+      "time": 1,
+      "desc": "created",
+      "name": "main-0",
+      "type": "task",
+      "parent": "main-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 2,
+      "desc": "created",
+      "name": "nursery-0",
+      "type": "scope",
+      "parent": "main-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 3,
+      "desc": "created",
+      "name": "do_job-0__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 4,
+      "desc": "created",
+      "name": "do_job-0",
+      "type": "task",
+      "parent": "do_job-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 5,
+      "desc": "created",
+      "name": "do_job-1__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 6,
+      "desc": "created",
+      "name": "do_job-1",
+      "type": "task",
+      "parent": "do_job-1__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 7,
+      "desc": "created",
+      "name": "do_job-2__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 8,
+      "desc": "created",
+      "name": "do_job-2",
+      "type": "task",
+      "parent": "do_job-2__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 9,
+      "desc": "created",
+      "name": "do_job-3__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 10,
+      "desc": "created",
+      "name": "do_job-3",
+      "type": "task",
+      "parent": "do_job-3__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 11,
+      "desc": "created",
+      "name": "do_job-4__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 12,
+      "desc": "created",
+      "name": "do_job-4",
+      "type": "task",
+      "parent": "do_job-4__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 13,
+      "desc": "created",
+      "name": "nursery-1",
+      "type": "scope",
+      "parent": "do_job-4__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 14,
+      "desc": "created",
+      "name": "wait_and_submit-0__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-1"
+    },
+    {
+      "time": 15,
+      "desc": "created",
+      "name": "wait_and_submit-0",
+      "type": "task",
+      "parent": "wait_and_submit-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 16,
+      "desc": "created",
+      "name": "nursery-2",
+      "type": "scope",
+      "parent": "do_job-3__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 17,
+      "desc": "created",
+      "name": "wait_and_submit-1__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-2"
+    },
+    {
+      "time": 18,
+      "desc": "created",
+      "name": "wait_and_submit-1",
+      "type": "task",
+      "parent": "wait_and_submit-1__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 19,
+      "desc": "created",
+      "name": "nursery-3",
+      "type": "scope",
+      "parent": "do_job-2__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 20,
+      "desc": "created",
+      "name": "wait_and_submit-2__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-3"
+    },
+    {
+      "time": 21,
+      "desc": "created",
+      "name": "wait_and_submit-2",
+      "type": "task",
+      "parent": "wait_and_submit-2__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 22,
+      "desc": "created",
+      "name": "nursery-4",
+      "type": "scope",
+      "parent": "do_job-1__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 23,
+      "desc": "created",
+      "name": "wait_and_submit-3__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-4"
+    },
+    {
+      "time": 24,
+      "desc": "created",
+      "name": "wait_and_submit-3",
+      "type": "task",
+      "parent": "wait_and_submit-3__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 25,
+      "desc": "created",
+      "name": "nursery-5",
+      "type": "scope",
+      "parent": "do_job-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 26,
+      "desc": "created",
+      "name": "wait_and_submit-4__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-5"
+    },
+    {
+      "time": 27,
+      "desc": "created",
+      "name": "wait_and_submit-4",
+      "type": "task",
+      "parent": "wait_and_submit-4__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 28,
+      "desc": "created",
+      "name": "do_log-0__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 29,
+      "desc": "created",
+      "name": "do_log-0",
+      "type": "task",
+      "parent": "do_log-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 30,
+      "desc": "created",
+      "name": "do_log-1__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 31,
+      "desc": "created",
+      "name": "do_log-1",
+      "type": "task",
+      "parent": "do_log-1__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 32,
+      "desc": "created",
+      "name": "do_log-2__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 33,
+      "desc": "created",
+      "name": "do_log-2",
+      "type": "task",
+      "parent": "do_log-2__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 34,
+      "desc": "created",
+      "name": "do_log-3__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 35,
+      "desc": "created",
+      "name": "do_log-3",
+      "type": "task",
+      "parent": "do_log-3__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 36,
+      "desc": "created",
+      "name": "do_log-4__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 37,
+      "desc": "created",
+      "name": "do_log-4",
+      "type": "task",
+      "parent": "do_log-4__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 38,
+      "desc": "exited",
+      "name": "wait_and_submit-2",
+      "type": "task",
+      "parent": "wait_and_submit-2__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 39,
+      "desc": "exited",
+      "name": "wait_and_submit-2__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-3"
+    },
+    {
+      "time": 40,
+      "desc": "exited",
+      "name": "nursery-3",
+      "type": "scope",
+      "parent": "do_job-2__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 41,
+      "desc": "exited",
+      "name": "do_job-2",
+      "type": "task",
+      "parent": "do_job-2__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 42,
+      "desc": "exited",
+      "name": "do_job-2__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 43,
+      "desc": "created",
+      "name": "do_log-5__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 44,
+      "desc": "created",
+      "name": "do_log-5",
+      "type": "task",
+      "parent": "do_log-5__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 45,
+      "desc": "created",
+      "name": "do_log-6__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 46,
+      "desc": "created",
+      "name": "do_log-6",
+      "type": "task",
+      "parent": "do_log-6__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 47,
+      "desc": "exited",
+      "name": "wait_and_submit-3",
+      "type": "task",
+      "parent": "wait_and_submit-3__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 48,
+      "desc": "exited",
+      "name": "wait_and_submit-3__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-4"
+    },
+    {
+      "time": 49,
+      "desc": "created",
+      "name": "do_log-7__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 50,
+      "desc": "created",
+      "name": "do_log-7",
+      "type": "task",
+      "parent": "do_log-7__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 51,
+      "desc": "exited",
+      "name": "nursery-4",
+      "type": "scope",
+      "parent": "do_job-1__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 52,
+      "desc": "exited",
+      "name": "do_job-1",
+      "type": "task",
+      "parent": "do_job-1__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 53,
+      "desc": "exited",
+      "name": "do_job-1__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 54,
+      "desc": "exited",
+      "name": "do_log-0",
+      "type": "task",
+      "parent": "do_log-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 55,
+      "desc": "exited",
+      "name": "do_log-0__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 56,
+      "desc": "exited",
+      "name": "do_log-1",
+      "type": "task",
+      "parent": "do_log-1__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 57,
+      "desc": "exited",
+      "name": "do_log-1__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 58,
+      "desc": "exited",
+      "name": "do_log-2",
+      "type": "task",
+      "parent": "do_log-2__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 59,
+      "desc": "exited",
+      "name": "do_log-2__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 60,
+      "desc": "exited",
+      "name": "do_log-3",
+      "type": "task",
+      "parent": "do_log-3__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 61,
+      "desc": "exited",
+      "name": "do_log-3__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 62,
+      "desc": "exited",
+      "name": "do_log-4",
+      "type": "task",
+      "parent": "do_log-4__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 63,
+      "desc": "exited",
+      "name": "do_log-4__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 64,
+      "desc": "created",
+      "name": "do_log-8__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 65,
+      "desc": "created",
+      "name": "do_log-8",
+      "type": "task",
+      "parent": "do_log-8__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 66,
+      "desc": "exited",
+      "name": "wait_and_submit-0",
+      "type": "task",
+      "parent": "wait_and_submit-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 67,
+      "desc": "exited",
+      "name": "wait_and_submit-0__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-1"
+    },
+    {
+      "time": 68,
+      "desc": "exited",
+      "name": "nursery-1",
+      "type": "scope",
+      "parent": "do_job-4__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 69,
+      "desc": "exited",
+      "name": "do_job-4",
+      "type": "task",
+      "parent": "do_job-4__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 70,
+      "desc": "exited",
+      "name": "do_job-4__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 71,
+      "desc": "created",
+      "name": "do_log-9__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 72,
+      "desc": "created",
+      "name": "do_log-9",
+      "type": "task",
+      "parent": "do_log-9__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 73,
+      "desc": "exited",
+      "name": "do_log-5",
+      "type": "task",
+      "parent": "do_log-5__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 74,
+      "desc": "exited",
+      "name": "do_log-5__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 75,
+      "desc": "exited",
+      "name": "do_log-6",
+      "type": "task",
+      "parent": "do_log-6__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 76,
+      "desc": "exited",
+      "name": "do_log-6__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 77,
+      "desc": "created",
+      "name": "do_log-10__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 78,
+      "desc": "created",
+      "name": "do_log-10",
+      "type": "task",
+      "parent": "do_log-10__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 79,
+      "desc": "exited",
+      "name": "do_log-8",
+      "type": "task",
+      "parent": "do_log-8__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 80,
+      "desc": "exited",
+      "name": "do_log-8__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 81,
+      "desc": "exited",
+      "name": "do_log-7",
+      "type": "task",
+      "parent": "do_log-7__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 82,
+      "desc": "exited",
+      "name": "do_log-7__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 83,
+      "desc": "created",
+      "name": "do_log-11__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 84,
+      "desc": "created",
+      "name": "do_log-11",
+      "type": "task",
+      "parent": "do_log-11__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 85,
+      "desc": "exited",
+      "name": "do_log-9",
+      "type": "task",
+      "parent": "do_log-9__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 86,
+      "desc": "exited",
+      "name": "do_log-9__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 87,
+      "desc": "created",
+      "name": "do_log-12__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 88,
+      "desc": "created",
+      "name": "do_log-12",
+      "type": "task",
+      "parent": "do_log-12__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 89,
+      "desc": "exited",
+      "name": "do_log-10",
+      "type": "task",
+      "parent": "do_log-10__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 90,
+      "desc": "exited",
+      "name": "do_log-10__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 91,
+      "desc": "created",
+      "name": "do_log-13__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 92,
+      "desc": "created",
+      "name": "do_log-13",
+      "type": "task",
+      "parent": "do_log-13__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 93,
+      "desc": "exited",
+      "name": "do_log-11",
+      "type": "task",
+      "parent": "do_log-11__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 94,
+      "desc": "exited",
+      "name": "do_log-11__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 95,
+      "desc": "created",
+      "name": "do_log-14__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 96,
+      "desc": "created",
+      "name": "do_log-14",
+      "type": "task",
+      "parent": "do_log-14__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 97,
+      "desc": "exited",
+      "name": "do_log-12",
+      "type": "task",
+      "parent": "do_log-12__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 98,
+      "desc": "exited",
+      "name": "do_log-12__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 99,
+      "desc": "created",
+      "name": "do_log-15__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 100,
+      "desc": "created",
+      "name": "do_log-15",
+      "type": "task",
+      "parent": "do_log-15__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 101,
+      "desc": "exited",
+      "name": "do_log-13",
+      "type": "task",
+      "parent": "do_log-13__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 102,
+      "desc": "exited",
+      "name": "do_log-13__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 103,
+      "desc": "created",
+      "name": "do_log-16__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 104,
+      "desc": "created",
+      "name": "do_log-16",
+      "type": "task",
+      "parent": "do_log-16__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 105,
+      "desc": "exited",
+      "name": "do_log-14",
+      "type": "task",
+      "parent": "do_log-14__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 106,
+      "desc": "exited",
+      "name": "do_log-14__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 107,
+      "desc": "created",
+      "name": "do_log-17__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 108,
+      "desc": "created",
+      "name": "do_log-17",
+      "type": "task",
+      "parent": "do_log-17__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 109,
+      "desc": "exited",
+      "name": "do_log-15",
+      "type": "task",
+      "parent": "do_log-15__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 110,
+      "desc": "exited",
+      "name": "do_log-15__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 111,
+      "desc": "created",
+      "name": "do_log-18__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 112,
+      "desc": "created",
+      "name": "do_log-18",
+      "type": "task",
+      "parent": "do_log-18__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 113,
+      "desc": "exited",
+      "name": "do_log-16",
+      "type": "task",
+      "parent": "do_log-16__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 114,
+      "desc": "exited",
+      "name": "do_log-16__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 115,
+      "desc": "created",
+      "name": "do_log-19__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 116,
+      "desc": "created",
+      "name": "do_log-19",
+      "type": "task",
+      "parent": "do_log-19__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 117,
+      "desc": "exited",
+      "name": "do_log-17",
+      "type": "task",
+      "parent": "do_log-17__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 118,
+      "desc": "exited",
+      "name": "do_log-17__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 119,
+      "desc": "created",
+      "name": "do_log-20__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 120,
+      "desc": "created",
+      "name": "do_log-20",
+      "type": "task",
+      "parent": "do_log-20__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 121,
+      "desc": "exited",
+      "name": "do_log-18",
+      "type": "task",
+      "parent": "do_log-18__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 122,
+      "desc": "exited",
+      "name": "do_log-18__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 123,
+      "desc": "created",
+      "name": "do_log-21__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 124,
+      "desc": "created",
+      "name": "do_log-21",
+      "type": "task",
+      "parent": "do_log-21__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 125,
+      "desc": "exited",
+      "name": "do_log-19",
+      "type": "task",
+      "parent": "do_log-19__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 126,
+      "desc": "exited",
+      "name": "do_log-19__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 127,
+      "desc": "created",
+      "name": "do_log-22__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 128,
+      "desc": "created",
+      "name": "do_log-22",
+      "type": "task",
+      "parent": "do_log-22__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 129,
+      "desc": "exited",
+      "name": "do_log-20",
+      "type": "task",
+      "parent": "do_log-20__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 130,
+      "desc": "exited",
+      "name": "do_log-20__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 131,
+      "desc": "exited",
+      "name": "wait_and_submit-1",
+      "type": "task",
+      "parent": "wait_and_submit-1__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 132,
+      "desc": "exited",
+      "name": "wait_and_submit-1__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-2"
+    },
+    {
+      "time": 133,
+      "desc": "exited",
+      "name": "nursery-2",
+      "type": "scope",
+      "parent": "do_job-3__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 134,
+      "desc": "exited",
+      "name": "do_job-3",
+      "type": "task",
+      "parent": "do_job-3__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 135,
+      "desc": "exited",
+      "name": "do_job-3__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 136,
+      "desc": "created",
+      "name": "do_log-23__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 137,
+      "desc": "created",
+      "name": "do_log-23",
+      "type": "task",
+      "parent": "do_log-23__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 138,
+      "desc": "exited",
+      "name": "wait_and_submit-4",
+      "type": "task",
+      "parent": "wait_and_submit-4__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 139,
+      "desc": "exited",
+      "name": "wait_and_submit-4__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-5"
+    },
+    {
+      "time": 140,
+      "desc": "exited",
+      "name": "do_log-21",
+      "type": "task",
+      "parent": "do_log-21__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 141,
+      "desc": "exited",
+      "name": "do_log-21__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 142,
+      "desc": "exited",
+      "name": "nursery-5",
+      "type": "scope",
+      "parent": "do_job-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 143,
+      "desc": "exited",
+      "name": "do_job-0",
+      "type": "task",
+      "parent": "do_job-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 144,
+      "desc": "exited",
+      "name": "do_job-0__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 145,
+      "desc": "exited",
+      "name": "do_log-22",
+      "type": "task",
+      "parent": "do_log-22__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 146,
+      "desc": "exited",
+      "name": "do_log-22__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 147,
+      "desc": "exited",
+      "name": "do_log-23",
+      "type": "task",
+      "parent": "do_log-23__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 148,
+      "desc": "exited",
+      "name": "do_log-23__TRIO_VIS_Tscope",
+      "type": "scope",
+      "parent": "nursery-0"
+    },
+    {
+      "time": 149,
+      "desc": "exited",
+      "name": "nursery-0",
+      "type": "scope",
+      "parent": "main-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 150,
+      "desc": "exited",
+      "name": "main-0",
+      "type": "task",
+      "parent": "main-0__TRIO_VIS_Tscope"
+    },
+    {
+      "time": 151,
+      "desc": "exited",
+      "name": "main-0__TRIO_VIS_Tscope",
+      "type": "task"
+    }
+  ]
+}
