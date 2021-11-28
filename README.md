@@ -22,3 +22,12 @@ However, the visulizer interfould be language-agnostic (at least the format of t
 ## Try
 
 Upload `examples/sc-logs-err-control.json` to see example output.
+
+## Development
+
+[Node.js]: https://nodejs.org/en/download/
+
+1. Install [Node.js] (version v16+)
+2. Enable corepack: `corepack enable` (only compatible with Node.js v16+)
+3. Install dependencies: `yarn install`
+4. Start developing with: `yarn start`
